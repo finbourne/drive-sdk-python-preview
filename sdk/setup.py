@@ -45,10 +45,10 @@ with open("./lusid_drive/__version__.py") as fp:
 
 setup(
 
-    name='lusid-drive-sdk',
+    name='lusid-drive-sdk-preview',
     version=version['__version__'],
-    description='Python SDK for LUSID Drive API',
-    url='https://github.com/finbourne/drive-sdk-python',
+    description='Python SDK Preview for LUSID Drive API',
+    url='https://github.com/finbourne/drive-sdk-python-preview',
     author='FINBOURNE Technology',
     author_email='engineering@finbourne.com',
     license='MIT',

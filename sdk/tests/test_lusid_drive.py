@@ -21,9 +21,7 @@ class LusidDriveTests(unittest.TestCase):
 
         config = ApiConfigurationLoader.load("secrets.json")
 
-        # Will default to using bearer token first otherwise will attempt to use OAuth credentials from secrets.json
-        cls.api_factory = ApiClientFactory(token=config.api_token, drive_url=config.drive_url,
-                                           api_secrets_filename="secrets.json")
+        cls.api_factory = ApiClientFactory(token=config.api_token, api_url=config.drive_url)
         cls.folder_api = cls.api_factory.build(lusid_drive.api.FoldersApi)
         cls.files_api = cls.api_factory.build(lusid_drive.api.FilesApi)
 

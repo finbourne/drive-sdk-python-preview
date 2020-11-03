@@ -1,12 +1,12 @@
 class ApiConfiguration:
 
-    def __init__(self, token_url=None, api_url=None, username=None, password=None, client_id=None, client_secret=None,
+    def __init__(self, token_url=None, drive_url=None, username=None, password=None, client_id=None, client_secret=None,
                  app_name=None, certificate_filename=None, proxy_config=None, api_token=None):
         """
         The configuration required to access LUSID, read more at https://support.finbourne.com/getting-started-with-apis-sdks
 
         :param str token_url: The token URL of the identity provider
-        :param str api_url: The API URL for the LUSID client
+        :param str drive_url: The Drive URL for the LUSID client
         :param str username: The username to use
         :param str password: The password to use
         :param str client_id: The client id to use
@@ -17,7 +17,7 @@ class ApiConfiguration:
         :param lusid_drive.utilities.ProxyConfig proxy_config: The proxy configuration to use
         """
         self.__token_url = token_url
-        self.__api_url = api_url
+        self.__drive_url = drive_url
         self.__username = username
         self.__password = password
         self.__client_id = client_id
@@ -44,12 +44,12 @@ class ApiConfiguration:
         self.__token_url = value
 
     @property
-    def api_url(self):
-        return self.__api_url
+    def drive_url(self):
+        return self.__drive_url
 
-    @api_url.setter
-    def api_url(self, value):
-        self.__api_url = value
+    @drive_url.setter
+    def drive_url(self, value):
+        self.__drive_url = value
 
     @property
     def username(self):

@@ -21,7 +21,7 @@ class LusidDriveTests(unittest.TestCase):
 
         config = ApiConfigurationLoader.load("secrets.json")
 
-        cls.api_factory = ApiClientFactory(token=config.api_token, api_url=config.api_url)
+        cls.api_factory = ApiClientFactory(token=config.api_token, api_url=config.drive_url)
         cls.folder_api = cls.api_factory.build(lusid_drive.api.FoldersApi)
         cls.files_api = cls.api_factory.build(lusid_drive.api.FilesApi)
 

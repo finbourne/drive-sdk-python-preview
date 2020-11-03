@@ -3,9 +3,9 @@
       "env": "FBN_TOKEN_URL",
       "config": "tokenUrl"
   },
-  "api_url": {
+  "drive_url": {
       "env": "FBN_DRIVE_API_URL",
-      "config": "apiUrl"
+      "config": "driveUrl"
   },
   "username": {
       "env": "FBN_USERNAME",

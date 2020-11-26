@@ -8,7 +8,7 @@
       "url": "https://www.finbourne.com",
       "email": "info@finbourne.com"
     },
-    "version": "0.1.144",
+    "version": "0.1.145",
     "x-logo": {
       "url": "https://content.finbourne.com/LUSID-header.png",
       "backgroundColor": "#415464"
@@ -35,6 +35,9 @@
             "description": "File name.",
             "required": true,
             "schema": {
+              "maxLength": 256,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_-]+[A-Za-z0-9 _-]*\\.*[A-Za-z0-9]+$",
               "type": "string",
               "description": "File name."
             }
@@ -45,6 +48,9 @@
             "description": "File path.",
             "required": true,
             "schema": {
+              "maxLength": 512,
+              "minLength": 1,
+              "pattern": "^([\\/a-zA-Z0-9 \\-_]+)+$",
               "type": "string",
               "description": "File path."
             }
@@ -186,6 +192,9 @@
             "description": "Identifier of the file to be retrieved.",
             "required": true,
             "schema": {
+              "maxLength": 40,
+              "minLength": 30,
+              "pattern": "^[a-zA-Z0-9\\-]+$",
               "type": "string",
               "description": "Identifier of the file to be retrieved."
             }
@@ -296,6 +305,9 @@
             "description": "Identifier of the file to be deleted.",
             "required": true,
             "schema": {
+              "maxLength": 40,
+              "minLength": 30,
+              "pattern": "^[a-zA-Z0-9\\-]+$",
               "type": "string",
               "description": "Identifier of the file to be deleted."
             }
@@ -356,6 +368,9 @@
             "description": "Identifier of the file to be updated",
             "required": true,
             "schema": {
+              "maxLength": 40,
+              "minLength": 30,
+              "pattern": "^[a-zA-Z0-9\\-]+$",
               "type": "string",
               "description": "Identifier of the file to be updated"
             }
@@ -483,6 +498,9 @@
             "description": "Identifier of the file to be downloaded.",
             "required": true,
             "schema": {
+              "maxLength": 40,
+              "minLength": 30,
+              "pattern": "^[a-zA-Z0-9\\-]+$",
               "type": "string",
               "description": "Identifier of the file to be downloaded."
             }
@@ -563,6 +581,9 @@
             "description": "Identifier of the file.",
             "required": true,
             "schema": {
+              "maxLength": 40,
+              "minLength": 30,
+              "pattern": "^[a-zA-Z0-9\\-]+$",
               "type": "string",
               "description": "Identifier of the file."
             }
@@ -691,6 +712,9 @@
             "in": "query",
             "description": "The pagination token to use to continue listing contents from a previous call to list contents.\r\n            This value is returned from the previous call. If a pagination token is provided the sortBy and filter fields\r\n            must not have changed since the original request. Also, if set, a start value cannot be provided.",
             "schema": {
+              "maxLength": 200,
+              "minLength": 1,
+              "pattern": "^[a-zA-Z0-9\\+/]*={0,3}$",
               "type": "string",
               "description": "The pagination token to use to continue listing contents from a previous call to list contents.\r\n            This value is returned from the previous call. If a pagination token is provided the sortBy and filter fields\r\n            must not have changed since the original request. Also, if set, a start value cannot be provided.",
               "nullable": true
@@ -739,6 +763,9 @@
             "in": "query",
             "description": "Expression to filter the result set.",
             "schema": {
+              "maxLength": 2147483647,
+              "minLength": 0,
+              "pattern": ".*",
               "type": "string",
               "description": "Expression to filter the result set.",
               "default": "true",
@@ -933,6 +960,9 @@
             "description": "Unique ID of the folder",
             "required": true,
             "schema": {
+              "maxLength": 40,
+              "minLength": 30,
+              "pattern": "^[a-zA-Z0-9\\-]+$",
               "type": "string",
               "description": "Unique ID of the folder"
             }
@@ -1063,6 +1093,9 @@
             "description": "Unique ID of the folder",
             "required": true,
             "schema": {
+              "maxLength": 40,
+              "minLength": 30,
+              "pattern": "^[a-zA-Z0-9\\-]+$",
               "type": "string",
               "description": "Unique ID of the folder"
             }
@@ -1208,6 +1241,9 @@
             "description": "Unique ID of the folder",
             "required": true,
             "schema": {
+              "maxLength": 40,
+              "minLength": 30,
+              "pattern": "^[a-zA-Z0-9\\-]+$",
               "type": "string",
               "description": "Unique ID of the folder"
             }
@@ -1288,6 +1324,9 @@
             "description": "Unique ID of the folder where the files should be moved",
             "required": true,
             "schema": {
+              "maxLength": 40,
+              "minLength": 30,
+              "pattern": "^[a-zA-Z0-9\\-]+$",
               "type": "string",
               "description": "Unique ID of the folder where the files should be moved"
             }
@@ -1449,6 +1488,9 @@
             "description": "Unique ID of the folder",
             "required": true,
             "schema": {
+              "maxLength": 40,
+              "minLength": 30,
+              "pattern": "^[a-zA-Z0-9\\-]+$",
               "type": "string",
               "description": "Unique ID of the folder"
             }
@@ -1458,6 +1500,9 @@
             "in": "query",
             "description": "The pagination token to use to continue listing contents from a previous call to list contents.\r\n            This value is returned from the previous call. If a pagination token is provided the sortBy and filter fields\r\n            must not have changed since the original request. Also, if set, a start value cannot be provided.",
             "schema": {
+              "maxLength": 200,
+              "minLength": 1,
+              "pattern": "^[a-zA-Z0-9\\+/]*={0,3}$",
               "type": "string",
               "description": "The pagination token to use to continue listing contents from a previous call to list contents.\r\n            This value is returned from the previous call. If a pagination token is provided the sortBy and filter fields\r\n            must not have changed since the original request. Also, if set, a start value cannot be provided.",
               "nullable": true
@@ -1506,6 +1551,9 @@
             "in": "query",
             "description": "Expression to filter the result set.",
             "schema": {
+              "maxLength": 2147483647,
+              "minLength": 0,
+              "pattern": ".*",
               "type": "string",
               "description": "Expression to filter the result set.",
               "default": "",
@@ -1654,6 +1702,9 @@
             "in": "query",
             "description": "",
             "schema": {
+              "maxLength": 200,
+              "minLength": 1,
+              "pattern": "^[a-zA-Z0-9\\+/]*={0,3}$",
               "type": "string",
               "description": "",
               "nullable": true
@@ -1690,6 +1741,9 @@
             "in": "query",
             "description": "",
             "schema": {
+              "maxLength": 2147483647,
+              "minLength": 0,
+              "pattern": ".*",
               "type": "string",
               "description": "",
               "default": "",
@@ -1814,11 +1868,15 @@
         "type": "object",
         "properties": {
           "id": {
-            "pattern": "[a-z0-9]\\w+",
+            "maxLength": 40,
+            "minLength": 30,
+            "pattern": "^[a-zA-Z0-9\\-]+$",
             "type": "string",
             "description": "File or folder identifier"
           },
           "path": {
+            "maxLength": 512,
+            "minLength": 1,
             "pattern": "^([\\/a-zA-Z0-9 \\-_]+)+$",
             "type": "string",
             "description": "Path of the folder or file"
@@ -2001,6 +2059,8 @@
         "type": "object",
         "properties": {
           "path": {
+            "maxLength": 512,
+            "minLength": 1,
             "pattern": "^([\\/a-zA-Z0-9 \\-_]+)+$",
             "type": "string",
             "description": "Path of the updated file"
@@ -2059,6 +2119,8 @@
         "type": "object",
         "properties": {
           "path": {
+            "maxLength": 512,
+            "minLength": 1,
             "pattern": "^([\\/a-zA-Z0-9 \\-_]+)+$",
             "type": "string",
             "description": "Path of the created folder"
@@ -2082,6 +2144,8 @@
         "type": "object",
         "properties": {
           "path": {
+            "maxLength": 512,
+            "minLength": 1,
             "pattern": "^([\\/a-zA-Z0-9 \\-_]+)+$",
             "type": "string",
             "description": "Path of the updated folder"
@@ -2300,6 +2364,8 @@
         "type": "object",
         "properties": {
           "withPath": {
+            "maxLength": 512,
+            "minLength": 1,
             "pattern": "^([\\/a-zA-Z0-9 \\-_]+)+$",
             "type": "string",
             "description": "Optional path field to limit the search to result with a matching (case insensitive) path",

@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **create_file**
-> StorageObject create_file(x_lusid_drive_filename, x_lusid_drive_path, content_length, body=body)
+> StorageObject create_file(x_lusid_drive_filename, x_lusid_drive_path, content_length, body)
 
 [EXPERIMENTAL] Uploads a file to Lusid Drive.
 
@@ -36,12 +36,12 @@ configuration.host = "https://fbn-ci.lusid.com/drive"
 api_instance = lusid_drive.FilesApi(lusid_drive.ApiClient(configuration))
 x_lusid_drive_filename = 'x_lusid_drive_filename_example' # str | File name.
 x_lusid_drive_path = 'x_lusid_drive_path_example' # str | File path.
-content_length = 56 # int | File size.
-body = {"x-lusid-drive-filename":"filename","x-lusid-drive-path":"/file/path","content-Length":"123"} # str | File contents. (optional)
+content_length = 56 # int | The size in bytes of the file to be uploaded
+body = '/path/to/file' # file | 
 
 try:
     # [EXPERIMENTAL] Uploads a file to Lusid Drive.
-    api_response = api_instance.create_file(x_lusid_drive_filename, x_lusid_drive_path, content_length, body=body)
+    api_response = api_instance.create_file(x_lusid_drive_filename, x_lusid_drive_path, content_length, body)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling FilesApi->create_file: %s\n" % e)
@@ -53,8 +53,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **x_lusid_drive_filename** | **str**| File name. | 
  **x_lusid_drive_path** | **str**| File path. | 
- **content_length** | **int**| File size. | 
- **body** | **str**| File contents. | [optional] 
+ **content_length** | **int**| The size in bytes of the file to be uploaded | 
+ **body** | **file**|  | 
 
 ### Return type
 
@@ -258,7 +258,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_file_contents**
-> StorageObject update_file_contents(id, body=body)
+> StorageObject update_file_contents(id, content_length, body)
 
 [EXPERIMENTAL] Updates contents of a file in Drive.
 
@@ -279,12 +279,13 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 configuration.host = "https://fbn-ci.lusid.com/drive"
 # Create an instance of the API class
 api_instance = lusid_drive.FilesApi(lusid_drive.ApiClient(configuration))
-id = 'id_example' # str | Identifier of the file.
-body = {"path":"/New/parent/folder/path","name":"new-file-name"} # str | File contents. (optional)
+id = 'id_example' # str | The unique file identifier
+content_length = 56 # int | The size in bytes of the file to be uploaded
+body = '/path/to/file' # file | 
 
 try:
     # [EXPERIMENTAL] Updates contents of a file in Drive.
-    api_response = api_instance.update_file_contents(id, body=body)
+    api_response = api_instance.update_file_contents(id, content_length, body)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling FilesApi->update_file_contents: %s\n" % e)
@@ -294,8 +295,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| Identifier of the file. | 
- **body** | **str**| File contents. | [optional] 
+ **id** | **str**| The unique file identifier | 
+ **content_length** | **int**| The size in bytes of the file to be uploaded | 
+ **body** | **file**|  | 
 
 ### Return type
 

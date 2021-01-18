@@ -37,7 +37,7 @@ api_instance = lusid_drive.FilesApi(lusid_drive.ApiClient(configuration))
 x_lusid_drive_filename = 'x_lusid_drive_filename_example' # str | File name.
 x_lusid_drive_path = 'x_lusid_drive_path_example' # str | File path.
 content_length = 56 # int | The size in bytes of the file to be uploaded
-body = '/path/to/file' # file | 
+body = 'body_example' # str | 
 
 try:
     # [EXPERIMENTAL] Uploads a file to Lusid Drive.
@@ -54,7 +54,7 @@ Name | Type | Description  | Notes
  **x_lusid_drive_filename** | **str**| File name. | 
  **x_lusid_drive_path** | **str**| File path. | 
  **content_length** | **int**| The size in bytes of the file to be uploaded | 
- **body** | **file**|  | 
+ **body** | **str**|  | 
 
 ### Return type
 
@@ -281,7 +281,7 @@ configuration.host = "https://fbn-ci.lusid.com/drive"
 api_instance = lusid_drive.FilesApi(lusid_drive.ApiClient(configuration))
 id = 'id_example' # str | The unique file identifier
 content_length = 56 # int | The size in bytes of the file to be uploaded
-body = '/path/to/file' # file | 
+body = 'body_example' # str | 
 
 try:
     # [EXPERIMENTAL] Updates contents of a file in Drive.
@@ -297,7 +297,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| The unique file identifier | 
  **content_length** | **int**| The size in bytes of the file to be uploaded | 
- **body** | **file**|  | 
+ **body** | **str**|  | 
 
 ### Return type
 

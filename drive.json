@@ -8,7 +8,7 @@
       "url": "https://www.finbourne.com",
       "email": "info@finbourne.com"
     },
-    "version": "0.1.165",
+    "version": "0.1.168",
     "x-logo": {
       "url": "https://content.finbourne.com/LUSID-header.png",
       "backgroundColor": "#415464"
@@ -74,7 +74,7 @@
             "application/octet-stream": {
               "schema": {
                 "type": "string",
-                "format": "binary"
+                "format": "byte"
               }
             }
           },
@@ -602,7 +602,7 @@
             "application/octet-stream": {
               "schema": {
                 "type": "string",
-                "format": "binary"
+                "format": "byte"
               }
             }
           },

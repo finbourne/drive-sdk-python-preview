@@ -4,19 +4,19 @@ All URIs are relative to *https://fbn-ci.lusid.com/drive*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_folder**](FoldersApi.md#create_folder) | **POST** /api/folders | [EXPERIMENTAL] Create a new folder in LUSID Drive
-[**delete_folder**](FoldersApi.md#delete_folder) | **DELETE** /api/folders/{id} | [EXPERIMENTAL] Delete a specified folder and all subfolders
-[**get_folder**](FoldersApi.md#get_folder) | **GET** /api/folders/{id} | [EXPERIMENTAL] Get metadata of folder
-[**get_folder_contents**](FoldersApi.md#get_folder_contents) | **GET** /api/folders/{id}/contents | [EXPERIMENTAL] List contents of a folder
-[**get_root_folder**](FoldersApi.md#get_root_folder) | **GET** /api/folders | [EXPERIMENTAL] List contents of root folder
-[**move_folder**](FoldersApi.md#move_folder) | **POST** /api/folders/{id} | [EXPERIMENTAL] Move files to specified folder
-[**update_folder**](FoldersApi.md#update_folder) | **PUT** /api/folders/{id} | [EXPERIMENTAL] Update an existing folder&#39;s name, path
+[**create_folder**](FoldersApi.md#create_folder) | **POST** /api/folders | [BETA] Create a new folder in LUSID Drive
+[**delete_folder**](FoldersApi.md#delete_folder) | **DELETE** /api/folders/{id} | [BETA] Delete a specified folder and all subfolders
+[**get_folder**](FoldersApi.md#get_folder) | **GET** /api/folders/{id} | [BETA] Get metadata of folder
+[**get_folder_contents**](FoldersApi.md#get_folder_contents) | **GET** /api/folders/{id}/contents | [BETA] List contents of a folder
+[**get_root_folder**](FoldersApi.md#get_root_folder) | **GET** /api/folders | [BETA] List contents of root folder
+[**move_folder**](FoldersApi.md#move_folder) | **POST** /api/folders/{id} | [BETA] Move files to specified folder
+[**update_folder**](FoldersApi.md#update_folder) | **PUT** /api/folders/{id} | [BETA] Update an existing folder&#39;s name, path
 
 
 # **create_folder**
 > StorageObject create_folder(create_folder)
 
-[EXPERIMENTAL] Create a new folder in LUSID Drive
+[BETA] Create a new folder in LUSID Drive
 
 ### Example
 
@@ -38,7 +38,7 @@ api_instance = lusid_drive.FoldersApi(lusid_drive.ApiClient(configuration))
 create_folder = {"path":"/path/to/saveTo/","name":"folderName"} # CreateFolder | A CreateFolder object that defines the name and path of the new folder
 
 try:
-    # [EXPERIMENTAL] Create a new folder in LUSID Drive
+    # [BETA] Create a new folder in LUSID Drive
     api_response = api_instance.create_folder(create_folder)
     pprint(api_response)
 except ApiException as e:
@@ -76,7 +76,7 @@ Name | Type | Description  | Notes
 # **delete_folder**
 > delete_folder(id)
 
-[EXPERIMENTAL] Delete a specified folder and all subfolders
+[BETA] Delete a specified folder and all subfolders
 
 ### Example
 
@@ -98,7 +98,7 @@ api_instance = lusid_drive.FoldersApi(lusid_drive.ApiClient(configuration))
 id = 'id_example' # str | Unique ID of the folder
 
 try:
-    # [EXPERIMENTAL] Delete a specified folder and all subfolders
+    # [BETA] Delete a specified folder and all subfolders
     api_instance.delete_folder(id)
 except ApiException as e:
     print("Exception when calling FoldersApi->delete_folder: %s\n" % e)
@@ -136,7 +136,7 @@ void (empty response body)
 # **get_folder**
 > StorageObject get_folder(id)
 
-[EXPERIMENTAL] Get metadata of folder
+[BETA] Get metadata of folder
 
 ### Example
 
@@ -158,7 +158,7 @@ api_instance = lusid_drive.FoldersApi(lusid_drive.ApiClient(configuration))
 id = 'id_example' # str | Unique ID of the folder
 
 try:
-    # [EXPERIMENTAL] Get metadata of folder
+    # [BETA] Get metadata of folder
     api_response = api_instance.get_folder(id)
     pprint(api_response)
 except ApiException as e:
@@ -197,7 +197,7 @@ Name | Type | Description  | Notes
 # **get_folder_contents**
 > PagedResourceListOfStorageObject get_folder_contents(id, page=page, sort_by=sort_by, start=start, limit=limit, filter=filter)
 
-[EXPERIMENTAL] List contents of a folder
+[BETA] List contents of a folder
 
 ### Example
 
@@ -224,7 +224,7 @@ limit = 56 # int | When paginating, limit the number of returned results to this
 filter = '' # str | Expression to filter the result set. (optional) (default to '')
 
 try:
-    # [EXPERIMENTAL] List contents of a folder
+    # [BETA] List contents of a folder
     api_response = api_instance.get_folder_contents(id, page=page, sort_by=sort_by, start=start, limit=limit, filter=filter)
     pprint(api_response)
 except ApiException as e:
@@ -268,7 +268,7 @@ Name | Type | Description  | Notes
 # **get_root_folder**
 > PagedResourceListOfStorageObject get_root_folder(page=page, sort_by=sort_by, start=start, limit=limit, filter=filter)
 
-[EXPERIMENTAL] List contents of root folder
+[BETA] List contents of root folder
 
 ### Example
 
@@ -294,7 +294,7 @@ limit = 56 # int | When paginating, limit the number of returned results to this
 filter = 'true' # str | Expression to filter the result set. (optional) (default to 'true')
 
 try:
-    # [EXPERIMENTAL] List contents of root folder
+    # [BETA] List contents of root folder
     api_response = api_instance.get_root_folder(page=page, sort_by=sort_by, start=start, limit=limit, filter=filter)
     pprint(api_response)
 except ApiException as e:
@@ -336,7 +336,7 @@ Name | Type | Description  | Notes
 # **move_folder**
 > PagedResourceListOfStorageObject move_folder(id, request_body, overwrite=overwrite, delete_source=delete_source)
 
-[EXPERIMENTAL] Move files to specified folder
+[BETA] Move files to specified folder
 
 ### Example
 
@@ -361,7 +361,7 @@ overwrite = False # bool | True if the destination has file with same name if sh
 delete_source = False # bool | If true after moving the original file is deleted (optional) (default to False)
 
 try:
-    # [EXPERIMENTAL] Move files to specified folder
+    # [BETA] Move files to specified folder
     api_response = api_instance.move_folder(id, request_body, overwrite=overwrite, delete_source=delete_source)
     pprint(api_response)
 except ApiException as e:
@@ -404,7 +404,7 @@ Name | Type | Description  | Notes
 # **update_folder**
 > StorageObject update_folder(id, update_folder)
 
-[EXPERIMENTAL] Update an existing folder's name, path
+[BETA] Update an existing folder's name, path
 
 ### Example
 
@@ -427,7 +427,7 @@ id = 'id_example' # str | Unique ID of the folder
 update_folder = {"path":"/Documents/Common/Legal/","name":"FolderName"} # UpdateFolder | An UpdateFolder object that defines the new name or path of the folder
 
 try:
-    # [EXPERIMENTAL] Update an existing folder's name, path
+    # [BETA] Update an existing folder's name, path
     api_response = api_instance.update_folder(id, update_folder)
     pprint(api_response)
 except ApiException as e:

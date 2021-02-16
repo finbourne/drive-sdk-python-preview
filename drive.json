@@ -8,7 +8,7 @@
       "url": "https://www.finbourne.com",
       "email": "info@finbourne.com"
     },
-    "version": "0.1.179",
+    "version": "0.1.180",
     "x-logo": {
       "url": "https://content.finbourne.com/LUSID-header.png",
       "backgroundColor": "#415464"
@@ -61,8 +61,6 @@
             "description": "The size in bytes of the file to be uploaded",
             "required": true,
             "schema": {
-              "maximum": 524288000,
-              "minimum": 1,
               "type": "integer",
               "description": "The size in bytes of the file to be uploaded",
               "format": "int32"
@@ -589,8 +587,6 @@
             "description": "The size in bytes of the file to be uploaded",
             "required": true,
             "schema": {
-              "maximum": 524288000,
-              "minimum": 1,
               "type": "integer",
               "description": "The size in bytes of the file to be uploaded",
               "format": "int32"

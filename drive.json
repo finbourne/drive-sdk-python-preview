@@ -8,7 +8,7 @@
       "url": "https://www.finbourne.com",
       "email": "info@finbourne.com"
     },
-    "version": "0.1.207",
+    "version": "0.1.208",
     "x-logo": {
       "url": "https://content.finbourne.com/LUSID-header.png",
       "backgroundColor": "#415464"
@@ -95,7 +95,9 @@
                   "updatedBy": "00u6po8cnkZoLoS5j1t7",
                   "updatedOn": "2020-03-02T00:00:00.0000000+00:00",
                   "type": "File",
-                  "size": 123456
+                  "size": 123456,
+                  "status": "Available",
+                  "statusDetail": ""
                 }
               },
               "application/json": {
@@ -111,7 +113,9 @@
                   "updatedBy": "00u6po8cnkZoLoS5j1t7",
                   "updatedOn": "2020-03-02T00:00:00.0000000+00:00",
                   "type": "File",
-                  "size": 123456
+                  "size": 123456,
+                  "status": "Available",
+                  "statusDetail": ""
                 }
               },
               "text/json": {
@@ -127,7 +131,9 @@
                   "updatedBy": "00u6po8cnkZoLoS5j1t7",
                   "updatedOn": "2020-03-02T00:00:00.0000000+00:00",
                   "type": "File",
-                  "size": 123456
+                  "size": 123456,
+                  "status": "Available",
+                  "statusDetail": ""
                 }
               }
             }
@@ -210,7 +216,9 @@
                   "updatedBy": "00u6po8cnkZoLoS5j1t7",
                   "updatedOn": "2020-03-02T00:00:00.0000000+00:00",
                   "type": "File",
-                  "size": 123456
+                  "size": 123456,
+                  "status": "Available",
+                  "statusDetail": ""
                 }
               },
               "application/json": {
@@ -226,7 +234,9 @@
                   "updatedBy": "00u6po8cnkZoLoS5j1t7",
                   "updatedOn": "2020-03-02T00:00:00.0000000+00:00",
                   "type": "File",
-                  "size": 123456
+                  "size": 123456,
+                  "status": "Available",
+                  "statusDetail": ""
                 }
               },
               "text/json": {
@@ -242,7 +252,9 @@
                   "updatedBy": "00u6po8cnkZoLoS5j1t7",
                   "updatedOn": "2020-03-02T00:00:00.0000000+00:00",
                   "type": "File",
-                  "size": 123456
+                  "size": 123456,
+                  "status": "Available",
+                  "statusDetail": ""
                 }
               }
             }
@@ -401,7 +413,9 @@
                   "updatedBy": "00u6po8cnkZoLoS5j1t7",
                   "updatedOn": "2020-03-02T00:00:00.0000000+00:00",
                   "type": "File",
-                  "size": 123456
+                  "size": 123456,
+                  "status": "Available",
+                  "statusDetail": ""
                 }
               },
               "application/json": {
@@ -417,7 +431,9 @@
                   "updatedBy": "00u6po8cnkZoLoS5j1t7",
                   "updatedOn": "2020-03-02T00:00:00.0000000+00:00",
                   "type": "File",
-                  "size": 123456
+                  "size": 123456,
+                  "status": "Available",
+                  "statusDetail": ""
                 }
               },
               "text/json": {
@@ -433,7 +449,9 @@
                   "updatedBy": "00u6po8cnkZoLoS5j1t7",
                   "updatedOn": "2020-03-02T00:00:00.0000000+00:00",
                   "type": "File",
-                  "size": 123456
+                  "size": 123456,
+                  "status": "Available",
+                  "statusDetail": ""
                 }
               }
             }
@@ -621,7 +639,9 @@
                   "updatedBy": "00u6po8cnkZoLoS5j1t7",
                   "updatedOn": "2020-03-02T00:00:00.0000000+00:00",
                   "type": "File",
-                  "size": 123456
+                  "size": 123456,
+                  "status": "Available",
+                  "statusDetail": ""
                 }
               },
               "application/json": {
@@ -637,7 +657,9 @@
                   "updatedBy": "00u6po8cnkZoLoS5j1t7",
                   "updatedOn": "2020-03-02T00:00:00.0000000+00:00",
                   "type": "File",
-                  "size": 123456
+                  "size": 123456,
+                  "status": "Available",
+                  "statusDetail": ""
                 }
               },
               "text/json": {
@@ -653,7 +675,9 @@
                   "updatedBy": "00u6po8cnkZoLoS5j1t7",
                   "updatedOn": "2020-03-02T00:00:00.0000000+00:00",
                   "type": "File",
-                  "size": 123456
+                  "size": 123456,
+                  "status": "Available",
+                  "statusDetail": ""
                 }
               }
             }
@@ -868,7 +892,9 @@
                   "updatedBy": "00u6po8cnkZoLoS5j1t7",
                   "updatedOn": "2020-03-02T00:00:00.0000000+00:00",
                   "type": "File",
-                  "size": 123456
+                  "size": 123456,
+                  "status": "Available",
+                  "statusDetail": ""
                 }
               },
               "application/json": {
@@ -884,7 +910,9 @@
                   "updatedBy": "00u6po8cnkZoLoS5j1t7",
                   "updatedOn": "2020-03-02T00:00:00.0000000+00:00",
                   "type": "File",
-                  "size": 123456
+                  "size": 123456,
+                  "status": "Available",
+                  "statusDetail": ""
                 }
               },
               "text/json": {
@@ -900,7 +928,9 @@
                   "updatedBy": "00u6po8cnkZoLoS5j1t7",
                   "updatedOn": "2020-03-02T00:00:00.0000000+00:00",
                   "type": "File",
-                  "size": 123456
+                  "size": 123456,
+                  "status": "Available",
+                  "statusDetail": ""
                 }
               }
             }
@@ -983,7 +1013,9 @@
                   "updatedBy": "00u6po8cnkZoLoS5j1t7",
                   "updatedOn": "2020-03-02T00:00:00.0000000+00:00",
                   "type": "File",
-                  "size": 123456
+                  "size": 123456,
+                  "status": "Available",
+                  "statusDetail": ""
                 }
               },
               "application/json": {
@@ -999,7 +1031,9 @@
                   "updatedBy": "00u6po8cnkZoLoS5j1t7",
                   "updatedOn": "2020-03-02T00:00:00.0000000+00:00",
                   "type": "File",
-                  "size": 123456
+                  "size": 123456,
+                  "status": "Available",
+                  "statusDetail": ""
                 }
               },
               "text/json": {
@@ -1015,7 +1049,9 @@
                   "updatedBy": "00u6po8cnkZoLoS5j1t7",
                   "updatedOn": "2020-03-02T00:00:00.0000000+00:00",
                   "type": "File",
-                  "size": 123456
+                  "size": 123456,
+                  "status": "Available",
+                  "statusDetail": ""
                 }
               }
             }
@@ -1131,7 +1167,9 @@
                   "updatedBy": "00u6po8cnkZoLoS5j1t7",
                   "updatedOn": "2020-03-02T00:00:00.0000000+00:00",
                   "type": "File",
-                  "size": 123456
+                  "size": 123456,
+                  "status": "Available",
+                  "statusDetail": ""
                 }
               },
               "application/json": {
@@ -1147,7 +1185,9 @@
                   "updatedBy": "00u6po8cnkZoLoS5j1t7",
                   "updatedOn": "2020-03-02T00:00:00.0000000+00:00",
                   "type": "File",
-                  "size": 123456
+                  "size": 123456,
+                  "status": "Available",
+                  "statusDetail": ""
                 }
               },
               "text/json": {
@@ -1163,7 +1203,9 @@
                   "updatedBy": "00u6po8cnkZoLoS5j1t7",
                   "updatedOn": "2020-03-02T00:00:00.0000000+00:00",
                   "type": "File",
-                  "size": 123456
+                  "size": 123456,
+                  "status": "Available",
+                  "statusDetail": ""
                 }
               }
             }
@@ -1912,6 +1954,16 @@
             "type": "integer",
             "description": "Size of the file in bytes",
             "format": "int32",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "description": "File status corresponding to virus scan status",
+            "nullable": true
+          },
+          "statusDetail": {
+            "type": "string",
+            "description": "Detailed description describing any negative terminal state of file",
             "nullable": true
           },
           "links": {

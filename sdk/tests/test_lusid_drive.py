@@ -119,13 +119,6 @@ class LusidDriveTests(unittest.TestCase):
         )
         self.assertEqual(self.create_test_file_name, response.name)
 
-    def test_download_file(self):
-
-        folder_id = utilities.get_folder_id(self.api_factory, self.test_folder_name)
-        file_id = utilities.get_file_id(self.api_factory, self.download_test_file_name, folder_id)
-        response = self.files_api.download_file(file_id)
-        self.assertIn(self.download_test_file_name, response)
-
     def test_delete_file(self):
 
         folder_id = utilities.get_folder_id(self.api_factory, self.test_folder_name)

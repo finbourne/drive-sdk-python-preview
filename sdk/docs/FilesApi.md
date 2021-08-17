@@ -4,7 +4,7 @@ All URIs are relative to *https://fbn-ci.lusid.com/drive*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_file**](FilesApi.md#create_file) | **POST** /api/files | [BETA] Uploads a file to Lusid Drive.
+[**create_file**](FilesApi.md#create_file) | **POST** /api/files | [BETA] Uploads a file to Lusid Drive. If using an SDK, consider using the UploadAsStreamAsync function for larger files instead.
 [**delete_file**](FilesApi.md#delete_file) | **DELETE** /api/files/{id} | [BETA] Deletes a file from Drive.
 [**download_file**](FilesApi.md#download_file) | **GET** /api/files/{id}/contents | [BETA] Download the file from Drive.
 [**get_file**](FilesApi.md#get_file) | **GET** /api/files/{id} | [BETA] Get a file stored in Drive.
@@ -15,7 +15,7 @@ Method | HTTP request | Description
 # **create_file**
 > StorageObject create_file(x_lusid_drive_filename, x_lusid_drive_path, content_length, body)
 
-[BETA] Uploads a file to Lusid Drive.
+[BETA] Uploads a file to Lusid Drive. If using an SDK, consider using the UploadAsStreamAsync function for larger files instead.
 
 ### Example
 
@@ -40,7 +40,7 @@ content_length = 56 # int | The size in bytes of the file to be uploaded
 body = 'body_example' # str | 
 
 try:
-    # [BETA] Uploads a file to Lusid Drive.
+    # [BETA] Uploads a file to Lusid Drive. If using an SDK, consider using the UploadAsStreamAsync function for larger files instead.
     api_response = api_instance.create_file(x_lusid_drive_filename, x_lusid_drive_path, content_length, body)
     pprint(api_response)
 except ApiException as e:

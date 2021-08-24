@@ -5,7 +5,6 @@ from lusid_drive import ApiException
 
 
 def lusid_drive_retry(fn):
-
     @functools.wraps(fn)
     def __retry(*args, **kwargs):
 
@@ -20,7 +19,11 @@ def lusid_drive_retry(fn):
             except ApiException as ex:
 
                 tries += 1
-                retry_after = ex.headers.get("Retry-After")
+
+                retry_after = ex.headers.get("Retry-After") if ex.headers else None
+
+                if ex.status == 423:
+                    retry_after = 10
 
                 # have done max number of retries
                 if tries == retries:

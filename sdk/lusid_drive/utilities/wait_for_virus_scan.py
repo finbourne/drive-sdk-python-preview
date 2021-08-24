@@ -6,7 +6,6 @@ import lusid_drive
 class WaitForVirusScan():
 
     def __init__(self, files_api):
-        self.api_factory = ApiClientFactory(api_secrets_filename="secrets.json")
         self.files_api = self.api_factory.build(lusid_drive.api.FilesApi)
 
     @lusid_drive_retry

@@ -2,15 +2,12 @@ import unittest
 import json
 import logging
 import os
-from pathlib import Path
 from unittest.mock import patch, Mock
 
 import lusid_drive
 import lusid_drive.utilities.utility_functions as utilities
 from lusid_drive import models as models, ApiException, FilesApi
 from lusid_drive.utilities import ApiClientFactory
-from lusid_drive.utilities import ApiConfigurationLoader
-from lusid_drive.utilities.lusid_drive_retry import lusid_drive_retry
 from lusid_drive.utilities.wait_for_virus_scan import WaitForVirusScan
 
 
@@ -28,9 +25,7 @@ class LusidDriveTests(unittest.TestCase):
         cls.logger = logging.getLogger()
         cls.logger.setLevel(logging.INFO)
 
-        config = ApiConfigurationLoader.load("secrets.json")
-
-        cls.api_factory = ApiClientFactory(api_secrets_filename="secrets.json")
+        cls.api_factory = ApiClientFactory()
         cls.folder_api = cls.api_factory.build(lusid_drive.api.FoldersApi)
         cls.files_api = cls.api_factory.build(lusid_drive.api.FilesApi)
 

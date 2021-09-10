@@ -1,5 +1,7 @@
 # CreateFolder
 
+DTO representing the creation of a folder
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

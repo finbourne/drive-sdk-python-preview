@@ -1,5 +1,7 @@
 # SearchBody
 
+DTO representing the search query
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

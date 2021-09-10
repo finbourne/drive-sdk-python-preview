@@ -27,22 +27,35 @@ import time
 import lusid_drive
 from lusid_drive.rest import ApiException
 from pprint import pprint
-configuration = lusid_drive.Configuration()
+# Defining the host is optional and defaults to https://fbn-ci.lusid.com/drive
+# See configuration.py for a list of all supported configuration parameters.
+configuration = lusid_drive.Configuration(
+    host = "https://fbn-ci.lusid.com/drive"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure OAuth2 access token for authorization: oauth2
+configuration = lusid_drive.Configuration(
+    host = "https://fbn-ci.lusid.com/drive"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://fbn-ci.lusid.com/drive
-configuration.host = "https://fbn-ci.lusid.com/drive"
-# Create an instance of the API class
-api_instance = lusid_drive.FoldersApi(lusid_drive.ApiClient(configuration))
-create_folder = {"path":"/path/to/saveTo/","name":"folderName"} # CreateFolder | A CreateFolder object that defines the name and path of the new folder
+# Enter a context with an instance of the API client
+with lusid_drive.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = lusid_drive.FoldersApi(api_client)
+    create_folder = {"path":"/path/to/saveTo/","name":"folderName"} # CreateFolder | A CreateFolder object that defines the name and path of the new folder
 
-try:
-    # [BETA] Create a new folder in LUSID Drive
-    api_response = api_instance.create_folder(create_folder)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling FoldersApi->create_folder: %s\n" % e)
+    try:
+        # [BETA] Create a new folder in LUSID Drive
+        api_response = api_instance.create_folder(create_folder)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling FoldersApi->create_folder: %s\n" % e)
 ```
 
 ### Parameters
@@ -87,21 +100,34 @@ import time
 import lusid_drive
 from lusid_drive.rest import ApiException
 from pprint import pprint
-configuration = lusid_drive.Configuration()
+# Defining the host is optional and defaults to https://fbn-ci.lusid.com/drive
+# See configuration.py for a list of all supported configuration parameters.
+configuration = lusid_drive.Configuration(
+    host = "https://fbn-ci.lusid.com/drive"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure OAuth2 access token for authorization: oauth2
+configuration = lusid_drive.Configuration(
+    host = "https://fbn-ci.lusid.com/drive"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://fbn-ci.lusid.com/drive
-configuration.host = "https://fbn-ci.lusid.com/drive"
-# Create an instance of the API class
-api_instance = lusid_drive.FoldersApi(lusid_drive.ApiClient(configuration))
-id = 'id_example' # str | Unique ID of the folder
+# Enter a context with an instance of the API client
+with lusid_drive.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = lusid_drive.FoldersApi(api_client)
+    id = 'id_example' # str | Unique ID of the folder
 
-try:
-    # [BETA] Delete a specified folder and all subfolders
-    api_instance.delete_folder(id)
-except ApiException as e:
-    print("Exception when calling FoldersApi->delete_folder: %s\n" % e)
+    try:
+        # [BETA] Delete a specified folder and all subfolders
+        api_instance.delete_folder(id)
+    except ApiException as e:
+        print("Exception when calling FoldersApi->delete_folder: %s\n" % e)
 ```
 
 ### Parameters
@@ -147,22 +173,35 @@ import time
 import lusid_drive
 from lusid_drive.rest import ApiException
 from pprint import pprint
-configuration = lusid_drive.Configuration()
+# Defining the host is optional and defaults to https://fbn-ci.lusid.com/drive
+# See configuration.py for a list of all supported configuration parameters.
+configuration = lusid_drive.Configuration(
+    host = "https://fbn-ci.lusid.com/drive"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure OAuth2 access token for authorization: oauth2
+configuration = lusid_drive.Configuration(
+    host = "https://fbn-ci.lusid.com/drive"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://fbn-ci.lusid.com/drive
-configuration.host = "https://fbn-ci.lusid.com/drive"
-# Create an instance of the API class
-api_instance = lusid_drive.FoldersApi(lusid_drive.ApiClient(configuration))
-id = 'id_example' # str | Unique ID of the folder
+# Enter a context with an instance of the API client
+with lusid_drive.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = lusid_drive.FoldersApi(api_client)
+    id = 'id_example' # str | Unique ID of the folder
 
-try:
-    # [BETA] Get metadata of folder
-    api_response = api_instance.get_folder(id)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling FoldersApi->get_folder: %s\n" % e)
+    try:
+        # [BETA] Get metadata of folder
+        api_response = api_instance.get_folder(id)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling FoldersApi->get_folder: %s\n" % e)
 ```
 
 ### Parameters
@@ -208,27 +247,40 @@ import time
 import lusid_drive
 from lusid_drive.rest import ApiException
 from pprint import pprint
-configuration = lusid_drive.Configuration()
+# Defining the host is optional and defaults to https://fbn-ci.lusid.com/drive
+# See configuration.py for a list of all supported configuration parameters.
+configuration = lusid_drive.Configuration(
+    host = "https://fbn-ci.lusid.com/drive"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure OAuth2 access token for authorization: oauth2
+configuration = lusid_drive.Configuration(
+    host = "https://fbn-ci.lusid.com/drive"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://fbn-ci.lusid.com/drive
-configuration.host = "https://fbn-ci.lusid.com/drive"
-# Create an instance of the API class
-api_instance = lusid_drive.FoldersApi(lusid_drive.ApiClient(configuration))
-id = 'id_example' # str | Unique ID of the folder
+# Enter a context with an instance of the API client
+with lusid_drive.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = lusid_drive.FoldersApi(api_client)
+    id = 'id_example' # str | Unique ID of the folder
 page = 'page_example' # str | The pagination token to use to continue listing contents from a previous call to list contents.              This value is returned from the previous call. If a pagination token is provided the sortBy and filter fields              must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
 sort_by = ['sort_by_example'] # list[str] | Order the results by these fields. Use use the '-' sign to denote descending order. (optional)
 start = 56 # int | When paginating, skip this number of results. (optional)
 limit = 56 # int | When paginating, limit the number of returned results to this many. (optional)
 filter = '' # str | Expression to filter the result set. (optional) (default to '')
 
-try:
-    # [BETA] List contents of a folder
-    api_response = api_instance.get_folder_contents(id, page=page, sort_by=sort_by, start=start, limit=limit, filter=filter)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling FoldersApi->get_folder_contents: %s\n" % e)
+    try:
+        # [BETA] List contents of a folder
+        api_response = api_instance.get_folder_contents(id, page=page, sort_by=sort_by, start=start, limit=limit, filter=filter)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling FoldersApi->get_folder_contents: %s\n" % e)
 ```
 
 ### Parameters
@@ -279,26 +331,39 @@ import time
 import lusid_drive
 from lusid_drive.rest import ApiException
 from pprint import pprint
-configuration = lusid_drive.Configuration()
+# Defining the host is optional and defaults to https://fbn-ci.lusid.com/drive
+# See configuration.py for a list of all supported configuration parameters.
+configuration = lusid_drive.Configuration(
+    host = "https://fbn-ci.lusid.com/drive"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure OAuth2 access token for authorization: oauth2
+configuration = lusid_drive.Configuration(
+    host = "https://fbn-ci.lusid.com/drive"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://fbn-ci.lusid.com/drive
-configuration.host = "https://fbn-ci.lusid.com/drive"
-# Create an instance of the API class
-api_instance = lusid_drive.FoldersApi(lusid_drive.ApiClient(configuration))
-page = 'page_example' # str | The pagination token to use to continue listing contents from a previous call to list contents.              This value is returned from the previous call. If a pagination token is provided the sortBy and filter fields              must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+# Enter a context with an instance of the API client
+with lusid_drive.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = lusid_drive.FoldersApi(api_client)
+    page = 'page_example' # str | The pagination token to use to continue listing contents from a previous call to list contents.              This value is returned from the previous call. If a pagination token is provided the sortBy and filter fields              must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
 sort_by = ['sort_by_example'] # list[str] | Order the results by these fields. Use use the '-' sign to denote descending order. (optional)
 start = 56 # int | When paginating, skip this number of results. (optional)
 limit = 56 # int | When paginating, limit the number of returned results to this many. (optional)
 filter = 'true' # str | Expression to filter the result set. (optional) (default to 'true')
 
-try:
-    # [BETA] List contents of root folder
-    api_response = api_instance.get_root_folder(page=page, sort_by=sort_by, start=start, limit=limit, filter=filter)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling FoldersApi->get_root_folder: %s\n" % e)
+    try:
+        # [BETA] List contents of root folder
+        api_response = api_instance.get_root_folder(page=page, sort_by=sort_by, start=start, limit=limit, filter=filter)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling FoldersApi->get_root_folder: %s\n" % e)
 ```
 
 ### Parameters
@@ -347,25 +412,38 @@ import time
 import lusid_drive
 from lusid_drive.rest import ApiException
 from pprint import pprint
-configuration = lusid_drive.Configuration()
+# Defining the host is optional and defaults to https://fbn-ci.lusid.com/drive
+# See configuration.py for a list of all supported configuration parameters.
+configuration = lusid_drive.Configuration(
+    host = "https://fbn-ci.lusid.com/drive"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure OAuth2 access token for authorization: oauth2
+configuration = lusid_drive.Configuration(
+    host = "https://fbn-ci.lusid.com/drive"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://fbn-ci.lusid.com/drive
-configuration.host = "https://fbn-ci.lusid.com/drive"
-# Create an instance of the API class
-api_instance = lusid_drive.FoldersApi(lusid_drive.ApiClient(configuration))
-id = 'id_example' # str | Unique ID of the folder where the files should be moved
+# Enter a context with an instance of the API client
+with lusid_drive.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = lusid_drive.FoldersApi(api_client)
+    id = 'id_example' # str | Unique ID of the folder where the files should be moved
 request_body = ["FolderID1","FolderID2","FolderID3"] # list[str] | Enumerable of unique IDs of files that should be moved
 overwrite = False # bool | True if the destination has file with same name if should be overwritten (optional) (default to False)
 delete_source = False # bool | If true after moving the original file is deleted (optional) (default to False)
 
-try:
-    # [BETA] Move files to specified folder
-    api_response = api_instance.move_folder(id, request_body, overwrite=overwrite, delete_source=delete_source)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling FoldersApi->move_folder: %s\n" % e)
+    try:
+        # [BETA] Move files to specified folder
+        api_response = api_instance.move_folder(id, request_body, overwrite=overwrite, delete_source=delete_source)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling FoldersApi->move_folder: %s\n" % e)
 ```
 
 ### Parameters
@@ -415,23 +493,36 @@ import time
 import lusid_drive
 from lusid_drive.rest import ApiException
 from pprint import pprint
-configuration = lusid_drive.Configuration()
+# Defining the host is optional and defaults to https://fbn-ci.lusid.com/drive
+# See configuration.py for a list of all supported configuration parameters.
+configuration = lusid_drive.Configuration(
+    host = "https://fbn-ci.lusid.com/drive"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure OAuth2 access token for authorization: oauth2
+configuration = lusid_drive.Configuration(
+    host = "https://fbn-ci.lusid.com/drive"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://fbn-ci.lusid.com/drive
-configuration.host = "https://fbn-ci.lusid.com/drive"
-# Create an instance of the API class
-api_instance = lusid_drive.FoldersApi(lusid_drive.ApiClient(configuration))
-id = 'id_example' # str | Unique ID of the folder
+# Enter a context with an instance of the API client
+with lusid_drive.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = lusid_drive.FoldersApi(api_client)
+    id = 'id_example' # str | Unique ID of the folder
 update_folder = {"path":"/Documents/Common/Legal/","name":"FolderName"} # UpdateFolder | An UpdateFolder object that defines the new name or path of the folder
 
-try:
-    # [BETA] Update an existing folder's name, path
-    api_response = api_instance.update_folder(id, update_folder)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling FoldersApi->update_folder: %s\n" % e)
+    try:
+        # [BETA] Update an existing folder's name, path
+        api_response = api_instance.update_folder(id, update_folder)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling FoldersApi->update_folder: %s\n" % e)
 ```
 
 ### Parameters

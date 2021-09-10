@@ -26,25 +26,38 @@ import time
 import lusid_drive
 from lusid_drive.rest import ApiException
 from pprint import pprint
-configuration = lusid_drive.Configuration()
+# Defining the host is optional and defaults to https://fbn-ci.lusid.com/drive
+# See configuration.py for a list of all supported configuration parameters.
+configuration = lusid_drive.Configuration(
+    host = "https://fbn-ci.lusid.com/drive"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure OAuth2 access token for authorization: oauth2
+configuration = lusid_drive.Configuration(
+    host = "https://fbn-ci.lusid.com/drive"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://fbn-ci.lusid.com/drive
-configuration.host = "https://fbn-ci.lusid.com/drive"
-# Create an instance of the API class
-api_instance = lusid_drive.FilesApi(lusid_drive.ApiClient(configuration))
-x_lusid_drive_filename = 'x_lusid_drive_filename_example' # str | File name.
+# Enter a context with an instance of the API client
+with lusid_drive.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = lusid_drive.FilesApi(api_client)
+    x_lusid_drive_filename = 'x_lusid_drive_filename_example' # str | File name.
 x_lusid_drive_path = 'x_lusid_drive_path_example' # str | File path.
 content_length = 56 # int | The size in bytes of the file to be uploaded
 body = 'body_example' # str | 
 
-try:
-    # [BETA] Uploads a file to Lusid Drive. If using an SDK, consider using the UploadAsStreamAsync function for larger files instead.
-    api_response = api_instance.create_file(x_lusid_drive_filename, x_lusid_drive_path, content_length, body)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling FilesApi->create_file: %s\n" % e)
+    try:
+        # [BETA] Uploads a file to Lusid Drive. If using an SDK, consider using the UploadAsStreamAsync function for larger files instead.
+        api_response = api_instance.create_file(x_lusid_drive_filename, x_lusid_drive_path, content_length, body)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling FilesApi->create_file: %s\n" % e)
 ```
 
 ### Parameters
@@ -92,21 +105,34 @@ import time
 import lusid_drive
 from lusid_drive.rest import ApiException
 from pprint import pprint
-configuration = lusid_drive.Configuration()
+# Defining the host is optional and defaults to https://fbn-ci.lusid.com/drive
+# See configuration.py for a list of all supported configuration parameters.
+configuration = lusid_drive.Configuration(
+    host = "https://fbn-ci.lusid.com/drive"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure OAuth2 access token for authorization: oauth2
+configuration = lusid_drive.Configuration(
+    host = "https://fbn-ci.lusid.com/drive"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://fbn-ci.lusid.com/drive
-configuration.host = "https://fbn-ci.lusid.com/drive"
-# Create an instance of the API class
-api_instance = lusid_drive.FilesApi(lusid_drive.ApiClient(configuration))
-id = 'id_example' # str | Identifier of the file to be deleted.
+# Enter a context with an instance of the API client
+with lusid_drive.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = lusid_drive.FilesApi(api_client)
+    id = 'id_example' # str | Identifier of the file to be deleted.
 
-try:
-    # [BETA] Deletes a file from Drive.
-    api_instance.delete_file(id)
-except ApiException as e:
-    print("Exception when calling FilesApi->delete_file: %s\n" % e)
+    try:
+        # [BETA] Deletes a file from Drive.
+        api_instance.delete_file(id)
+    except ApiException as e:
+        print("Exception when calling FilesApi->delete_file: %s\n" % e)
 ```
 
 ### Parameters
@@ -151,22 +177,35 @@ import time
 import lusid_drive
 from lusid_drive.rest import ApiException
 from pprint import pprint
-configuration = lusid_drive.Configuration()
+# Defining the host is optional and defaults to https://fbn-ci.lusid.com/drive
+# See configuration.py for a list of all supported configuration parameters.
+configuration = lusid_drive.Configuration(
+    host = "https://fbn-ci.lusid.com/drive"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure OAuth2 access token for authorization: oauth2
+configuration = lusid_drive.Configuration(
+    host = "https://fbn-ci.lusid.com/drive"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://fbn-ci.lusid.com/drive
-configuration.host = "https://fbn-ci.lusid.com/drive"
-# Create an instance of the API class
-api_instance = lusid_drive.FilesApi(lusid_drive.ApiClient(configuration))
-id = 'id_example' # str | Identifier of the file to be downloaded.
+# Enter a context with an instance of the API client
+with lusid_drive.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = lusid_drive.FilesApi(api_client)
+    id = 'id_example' # str | Identifier of the file to be downloaded.
 
-try:
-    # [BETA] Download the file from Drive.
-    api_response = api_instance.download_file(id)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling FilesApi->download_file: %s\n" % e)
+    try:
+        # [BETA] Download the file from Drive.
+        api_response = api_instance.download_file(id)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling FilesApi->download_file: %s\n" % e)
 ```
 
 ### Parameters
@@ -213,22 +252,35 @@ import time
 import lusid_drive
 from lusid_drive.rest import ApiException
 from pprint import pprint
-configuration = lusid_drive.Configuration()
+# Defining the host is optional and defaults to https://fbn-ci.lusid.com/drive
+# See configuration.py for a list of all supported configuration parameters.
+configuration = lusid_drive.Configuration(
+    host = "https://fbn-ci.lusid.com/drive"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure OAuth2 access token for authorization: oauth2
+configuration = lusid_drive.Configuration(
+    host = "https://fbn-ci.lusid.com/drive"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://fbn-ci.lusid.com/drive
-configuration.host = "https://fbn-ci.lusid.com/drive"
-# Create an instance of the API class
-api_instance = lusid_drive.FilesApi(lusid_drive.ApiClient(configuration))
-id = 'id_example' # str | Identifier of the file to be retrieved.
+# Enter a context with an instance of the API client
+with lusid_drive.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = lusid_drive.FilesApi(api_client)
+    id = 'id_example' # str | Identifier of the file to be retrieved.
 
-try:
-    # [BETA] Get a file stored in Drive.
-    api_response = api_instance.get_file(id)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling FilesApi->get_file: %s\n" % e)
+    try:
+        # [BETA] Get a file stored in Drive.
+        api_response = api_instance.get_file(id)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling FilesApi->get_file: %s\n" % e)
 ```
 
 ### Parameters
@@ -273,24 +325,37 @@ import time
 import lusid_drive
 from lusid_drive.rest import ApiException
 from pprint import pprint
-configuration = lusid_drive.Configuration()
+# Defining the host is optional and defaults to https://fbn-ci.lusid.com/drive
+# See configuration.py for a list of all supported configuration parameters.
+configuration = lusid_drive.Configuration(
+    host = "https://fbn-ci.lusid.com/drive"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure OAuth2 access token for authorization: oauth2
+configuration = lusid_drive.Configuration(
+    host = "https://fbn-ci.lusid.com/drive"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://fbn-ci.lusid.com/drive
-configuration.host = "https://fbn-ci.lusid.com/drive"
-# Create an instance of the API class
-api_instance = lusid_drive.FilesApi(lusid_drive.ApiClient(configuration))
-id = 'id_example' # str | The unique file identifier
+# Enter a context with an instance of the API client
+with lusid_drive.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = lusid_drive.FilesApi(api_client)
+    id = 'id_example' # str | The unique file identifier
 content_length = 56 # int | The size in bytes of the file to be uploaded
 body = 'body_example' # str | 
 
-try:
-    # [BETA] Updates contents of a file in Drive.
-    api_response = api_instance.update_file_contents(id, content_length, body)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling FilesApi->update_file_contents: %s\n" % e)
+    try:
+        # [BETA] Updates contents of a file in Drive.
+        api_response = api_instance.update_file_contents(id, content_length, body)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling FilesApi->update_file_contents: %s\n" % e)
 ```
 
 ### Parameters
@@ -337,23 +402,36 @@ import time
 import lusid_drive
 from lusid_drive.rest import ApiException
 from pprint import pprint
-configuration = lusid_drive.Configuration()
+# Defining the host is optional and defaults to https://fbn-ci.lusid.com/drive
+# See configuration.py for a list of all supported configuration parameters.
+configuration = lusid_drive.Configuration(
+    host = "https://fbn-ci.lusid.com/drive"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure OAuth2 access token for authorization: oauth2
+configuration = lusid_drive.Configuration(
+    host = "https://fbn-ci.lusid.com/drive"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://fbn-ci.lusid.com/drive
-configuration.host = "https://fbn-ci.lusid.com/drive"
-# Create an instance of the API class
-api_instance = lusid_drive.FilesApi(lusid_drive.ApiClient(configuration))
-id = 'id_example' # str | Identifier of the file to be updated
+# Enter a context with an instance of the API client
+with lusid_drive.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = lusid_drive.FilesApi(api_client)
+    id = 'id_example' # str | Identifier of the file to be updated
 update_file = {"path":"/New/parent/folder/path","name":"new-file-name"} # UpdateFile | Update to be applied to file
 
-try:
-    # [BETA] Updates metadata for a file in Drive.
-    api_response = api_instance.update_file_metadata(id, update_file)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling FilesApi->update_file_metadata: %s\n" % e)
+    try:
+        # [BETA] Updates metadata for a file in Drive.
+        api_response = api_instance.update_file_metadata(id, update_file)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling FilesApi->update_file_metadata: %s\n" % e)
 ```
 
 ### Parameters

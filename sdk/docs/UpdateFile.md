@@ -1,5 +1,7 @@
 # UpdateFile
 
+DTO representing the update of the name or path of a file
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

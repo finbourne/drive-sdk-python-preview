@@ -4,13 +4,13 @@ All URIs are relative to *https://fbn-ci.lusid.com/drive*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**search**](SearchApi.md#search) | **POST** /api/search | [BETA] Search for a file or folder with a given name and path
+[**search**](SearchApi.md#search) | **POST** /api/search | [BETA] Search: Search for a file or folder with a given name and path
 
 
 # **search**
 > PagedResourceListOfStorageObject search(search_body, page=page, sort_by=sort_by, limit=limit, filter=filter)
 
-[BETA] Search for a file or folder with a given name and path
+[BETA] Search: Search for a file or folder with a given name and path
 
 ### Example
 
@@ -49,7 +49,7 @@ limit = 56 # int |  (optional)
 filter = '' # str |  (optional) (default to '')
 
     try:
-        # [BETA] Search for a file or folder with a given name and path
+        # [BETA] Search: Search for a file or folder with a given name and path
         api_response = api_instance.search(search_body, page=page, sort_by=sort_by, limit=limit, filter=filter)
         pprint(api_response)
     except ApiException as e:

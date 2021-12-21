@@ -6,9 +6,9 @@ name: Build and test
 
 on:
   push:
-    branches: [ develop ]
+    branches: [ master ]
   pull_request:
-    branches: [ master, develop ]
+    branches: [ master ]
 
 jobs:
   # This workflow contains a single job called "build"
@@ -54,7 +54,7 @@ jobs:
           FBN_APP_NAME: ${{ secrets.MASTER_FBN_CLIENT_ID }}
           FBN_LUSID_ACCESS_TOKEN: ${{ secrets.MASTER_FBN_ACCESS_TOKEN }}
         run: | 
-          echo "env variables for DEVELOP have been set"
+          echo "env variables for MASTER have been set"
           echo "Changing directory into sdk directory"
           cd sdk     
           echo "Running the tests..."

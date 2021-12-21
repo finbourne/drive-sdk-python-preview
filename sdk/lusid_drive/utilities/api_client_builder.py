@@ -1,6 +1,7 @@
 from urllib3 import make_headers
 from urllib.request import pathname2url
 import requests
+import os
 
 from lusid_drive import Configuration, ApiClient
 
@@ -94,12 +95,15 @@ class ApiClientBuilder:
         return api_token
 
     @classmethod
-    def build(cls, api_secrets_filename=None, okta_response_handler=None, api_configuration=None, token=None):
+    def build(cls, api_secrets_filename=None, okta_response_handler=None, api_configuration=None, token=None, 
+                    correlation_id=None, tcp_keep_alive=False):
         """
         :param str api_secrets_filename: The full path to the JSON file containing the API credentials and optional proxy details
         :param typing.callable okta_response_handler: An optional function to handle the Okta response
         :param lusid_drive.utilities.ApiConfiguration api_configuration: A pre-populated ApiConfiguration
         :param str token: The pre-populated access token to use instead of asking Okta for a token
+        :param str correlation_id: Correlation id for all calls made from the returned ApiClient instance, added as a header to each request
+        :param bool tcp_keep_alive: A flag that controls if the API client uses tcp keep-alive probes
 
         :return: lusid_drive.ApiClient: The configured LUSID ApiClient
         """
@@ -136,7 +140,7 @@ class ApiClientBuilder:
             )
 
         # Initialise the API client using the token so that it can be included in all future requests
-        config = Configuration()
+        config = Configuration(tcp_keep_alive=tcp_keep_alive)
         config.access_token = api_token
         config.host = configuration.drive_url
 
@@ -152,7 +156,15 @@ class ApiClientBuilder:
                 )
 
         # Create and return the ApiClient
-        return ApiClient(
-            configuration=config,
-            header_name="X-LUSID-Application" if configuration.app_name is not None else None,
-            header_value=configuration.app_name)
+        api_client = ApiClient(configuration=config)
+
+        # set the application name if specified
+        if configuration.app_name is not None:
+            api_client.set_default_header("X-LUSID-Application", configuration.app_name)
+
+        # set a correlation id for all requests initiated with this ApiClient
+        corr_id = correlation_id or os.getenv("FBN_CORRELATION_ID")
+        if corr_id is not None:
+            api_client.set_default_header("CorrelationId", corr_id)
+
+        return api_client

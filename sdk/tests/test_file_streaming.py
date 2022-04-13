@@ -14,11 +14,12 @@ class FileStreaming(unittest.TestCase):
     def setUpClass(cls) -> None:
         cls.logger = logging.getLogger()
         cls.logger.setLevel(logging.INFO)
-        config = ApiConfigurationLoader.load("C:\work\code\drive-sdk-python-preview\secrets.json")
+        config = ApiConfigurationLoader.load(os.path.join(os.getcwd(), "secrets.json"))
 
         cls.api_factory = ApiClientFactory(
             token=config.api_token,
-            drive_url=config.drive_url)
+            drive_url=config.drive_url,
+            api_secrets_filename=os.path.join(os.getcwd(), "secrets.json"))
 
         cls.folder_api = cls.api_factory.build(FoldersApi)
         cls.files_api = cls.api_factory.build(FilesApi)
@@ -105,20 +106,15 @@ class FileStreaming(unittest.TestCase):
                 f"Unexpected result for path {'/'.join([self.test_folder_name, self.download_test_file_name])}, "
                 f"{len(response.values)} results returned")
 
-        local_file = open(self.local_file_path, "r")
-        expected = local_file.read()
-        local_file.close()
+        with open(self.local_file_path, "r") as local_file:
+            expected = local_file.read()
 
         # act
-        stream = self.api_factory.build(FilesApi).download_file(response.values[0].id, _preload_content=False)
+        with self.api_factory.build(FilesApi).download_file(response.values[0].id, _preload_content=False) as stream:
 
-        # assert
-        actual = ""
-        for chunk in stream.stream(64):
-            actual += (bytes.decode(chunk))
-        stream.release_conn()
-
-        self.assertEqual(actual, expected)
+            # assert
+            actual = stream.read().decode("utf-8")
+            self.assertEqual(actual, expected)
 
     def test_stream_file_upload(self):
         # arrange

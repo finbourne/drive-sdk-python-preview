@@ -8,15 +8,16 @@ from lusid_drive.utilities.lusid_drive_retry import lusid_drive_retry
 def stream_file_upload(api_factory, x_lusid_drive_filename, x_lusid_drive_path, content_length, body):
     headers = {
         "Accept": "application/json, text/plain, text/json",
+        "Content-type": "application/octet-stream",
         "X-LUSID-SDK-Language": "Python",
         # extracts a version from generated header
-        "X-LUSID-SDK-Version": api_factory.api_client.default_headers["User-Agent"][18:-7],
-        "X-LUSID-Application": api_factory.api_client.default_headers["X-LUSID-Application"],
+        "X-LUSID-SDK-Version": api_factory.api_client.default_headers.get("User-Agent")[18:-7],
+        "X-LUSID-Application": api_factory.api_client.default_headers.get("X-LUSID-Application"),
         "Authorization": "Bearer " + api_factory.api_client.configuration.access_token,
         "x-lusid-drive-filename": x_lusid_drive_filename,
         "x-lusid-drive-path": x_lusid_drive_path,
         "Content-Length": str(content_length),
-        "User-Agent": api_factory.api_client.default_headers["User-Agent"]
+        "User-Agent": api_factory.api_client.default_headers.get("User-Agent")
     }
 
     response_types_map = {

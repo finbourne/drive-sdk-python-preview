@@ -13,7 +13,7 @@ def lusid_drive_retry(fn):
             retries = 3
 
         tries = 0
-        while tries < retries:
+        while tries < retries+1:
             try:
                 return fn(*args, **kwargs)
             except ApiException as ex:
@@ -31,6 +31,13 @@ def lusid_drive_retry(fn):
 
                 # try after delay
                 elif retry_after is not None:
+
+                    if not isinstance(retry_after, float):
+                        try:
+                            retry_after = float(retry_after)
+                        except ValueError:
+                            raise ValueError(f"invalid Retry-After header value: {retry_after}")
+
                     sleep(retry_after)
 
                 # no retry header

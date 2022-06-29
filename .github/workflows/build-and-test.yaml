@@ -58,7 +58,7 @@ jobs:
           echo "Changing directory into sdk directory"
           cd sdk     
           echo "Running the tests..."
-          python -m unittest tests/test_*
+          python -m unittest discover -v
           echo "Tests COMPLETED"
 
       - name: Slack notification

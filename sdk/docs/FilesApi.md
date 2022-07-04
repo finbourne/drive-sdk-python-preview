@@ -4,18 +4,18 @@ All URIs are relative to *https://fbn-ci.lusid.com/drive*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_file**](FilesApi.md#create_file) | **POST** /api/files | [BETA] CreateFile: Uploads a file to Lusid Drive. If using an SDK, consider using the UploadAsStreamAsync function for larger files instead.
-[**delete_file**](FilesApi.md#delete_file) | **DELETE** /api/files/{id} | [BETA] DeleteFile: Deletes a file from Drive.
-[**download_file**](FilesApi.md#download_file) | **GET** /api/files/{id}/contents | [BETA] DownloadFile: Download the file from Drive.
-[**get_file**](FilesApi.md#get_file) | **GET** /api/files/{id} | [BETA] GetFile: Get a file stored in Drive.
-[**update_file_contents**](FilesApi.md#update_file_contents) | **PUT** /api/files/{id}/contents | [BETA] UpdateFileContents: Updates contents of a file in Drive.
-[**update_file_metadata**](FilesApi.md#update_file_metadata) | **PUT** /api/files/{id} | [BETA] UpdateFileMetadata: Updates metadata for a file in Drive.
+[**create_file**](FilesApi.md#create_file) | **POST** /api/files | [EARLY ACCESS] CreateFile: Uploads a file to Lusid Drive. If using an SDK, consider using the UploadAsStreamAsync function for larger files instead.
+[**delete_file**](FilesApi.md#delete_file) | **DELETE** /api/files/{id} | [EARLY ACCESS] DeleteFile: Deletes a file from Drive.
+[**download_file**](FilesApi.md#download_file) | **GET** /api/files/{id}/contents | [EARLY ACCESS] DownloadFile: Download the file from Drive.
+[**get_file**](FilesApi.md#get_file) | **GET** /api/files/{id} | [EARLY ACCESS] GetFile: Get a file stored in Drive.
+[**update_file_contents**](FilesApi.md#update_file_contents) | **PUT** /api/files/{id}/contents | [EARLY ACCESS] UpdateFileContents: Updates contents of a file in Drive.
+[**update_file_metadata**](FilesApi.md#update_file_metadata) | **PUT** /api/files/{id} | [EARLY ACCESS] UpdateFileMetadata: Updates metadata for a file in Drive.
 
 
 # **create_file**
 > StorageObject create_file(x_lusid_drive_filename, x_lusid_drive_path, content_length, body)
 
-[BETA] CreateFile: Uploads a file to Lusid Drive. If using an SDK, consider using the UploadAsStreamAsync function for larger files instead.
+[EARLY ACCESS] CreateFile: Uploads a file to Lusid Drive. If using an SDK, consider using the UploadAsStreamAsync function for larger files instead.
 
 ### Example
 
@@ -53,7 +53,7 @@ content_length = 56 # int | The size in bytes of the file to be uploaded
 body = 'body_example' # str | 
 
     try:
-        # [BETA] CreateFile: Uploads a file to Lusid Drive. If using an SDK, consider using the UploadAsStreamAsync function for larger files instead.
+        # [EARLY ACCESS] CreateFile: Uploads a file to Lusid Drive. If using an SDK, consider using the UploadAsStreamAsync function for larger files instead.
         api_response = api_instance.create_file(x_lusid_drive_filename, x_lusid_drive_path, content_length, body)
         pprint(api_response)
     except ApiException as e:
@@ -94,7 +94,7 @@ Name | Type | Description  | Notes
 # **delete_file**
 > delete_file(id)
 
-[BETA] DeleteFile: Deletes a file from Drive.
+[EARLY ACCESS] DeleteFile: Deletes a file from Drive.
 
 ### Example
 
@@ -129,7 +129,7 @@ with lusid_drive.ApiClient(configuration) as api_client:
     id = 'id_example' # str | Identifier of the file to be deleted.
 
     try:
-        # [BETA] DeleteFile: Deletes a file from Drive.
+        # [EARLY ACCESS] DeleteFile: Deletes a file from Drive.
         api_instance.delete_file(id)
     except ApiException as e:
         print("Exception when calling FilesApi->delete_file: %s\n" % e)
@@ -166,7 +166,7 @@ void (empty response body)
 # **download_file**
 > file download_file(id)
 
-[BETA] DownloadFile: Download the file from Drive.
+[EARLY ACCESS] DownloadFile: Download the file from Drive.
 
 ### Example
 
@@ -201,7 +201,7 @@ with lusid_drive.ApiClient(configuration) as api_client:
     id = 'id_example' # str | Identifier of the file to be downloaded.
 
     try:
-        # [BETA] DownloadFile: Download the file from Drive.
+        # [EARLY ACCESS] DownloadFile: Download the file from Drive.
         api_response = api_instance.download_file(id)
         pprint(api_response)
     except ApiException as e:
@@ -241,7 +241,7 @@ Name | Type | Description  | Notes
 # **get_file**
 > StorageObject get_file(id)
 
-[BETA] GetFile: Get a file stored in Drive.
+[EARLY ACCESS] GetFile: Get a file stored in Drive.
 
 ### Example
 
@@ -276,7 +276,7 @@ with lusid_drive.ApiClient(configuration) as api_client:
     id = 'id_example' # str | Identifier of the file to be retrieved.
 
     try:
-        # [BETA] GetFile: Get a file stored in Drive.
+        # [EARLY ACCESS] GetFile: Get a file stored in Drive.
         api_response = api_instance.get_file(id)
         pprint(api_response)
     except ApiException as e:
@@ -314,7 +314,7 @@ Name | Type | Description  | Notes
 # **update_file_contents**
 > StorageObject update_file_contents(id, content_length, body)
 
-[BETA] UpdateFileContents: Updates contents of a file in Drive.
+[EARLY ACCESS] UpdateFileContents: Updates contents of a file in Drive.
 
 ### Example
 
@@ -351,7 +351,7 @@ content_length = 56 # int | The size in bytes of the file to be uploaded
 body = 'body_example' # str | 
 
     try:
-        # [BETA] UpdateFileContents: Updates contents of a file in Drive.
+        # [EARLY ACCESS] UpdateFileContents: Updates contents of a file in Drive.
         api_response = api_instance.update_file_contents(id, content_length, body)
         pprint(api_response)
     except ApiException as e:
@@ -391,7 +391,7 @@ Name | Type | Description  | Notes
 # **update_file_metadata**
 > StorageObject update_file_metadata(id, update_file)
 
-[BETA] UpdateFileMetadata: Updates metadata for a file in Drive.
+[EARLY ACCESS] UpdateFileMetadata: Updates metadata for a file in Drive.
 
 ### Example
 
@@ -427,7 +427,7 @@ with lusid_drive.ApiClient(configuration) as api_client:
 update_file = {"path":"/New/parent/folder/path","name":"new-file-name"} # UpdateFile | Update to be applied to file
 
     try:
-        # [BETA] UpdateFileMetadata: Updates metadata for a file in Drive.
+        # [EARLY ACCESS] UpdateFileMetadata: Updates metadata for a file in Drive.
         api_response = api_instance.update_file_metadata(id, update_file)
         pprint(api_response)
     except ApiException as e:

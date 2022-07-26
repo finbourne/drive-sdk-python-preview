@@ -1,8 +1,7 @@
-import lusid_drive
+from lusid_drive import SearchApi, SearchBody
 
-
-def name_to_id(item_list, target_item):
-    item_id = [obj.id for obj in item_list.values if obj.name == target_item]
+def name_to_id(item_list, target_item, target_type):
+    item_id = [obj.id for obj in item_list.values if obj.name == target_item and obj.type == target_type]
 
     if len(item_id) != 1:
         # TODO: raise an exception due to no matching item name, or multiple matches
@@ -15,21 +14,17 @@ def name_to_id(item_list, target_item):
 # a path to id function would be useful to build here...
 
 
-def get_folder_id(api_factory, folder_name):
-    folders_api = api_factory.build(lusid_drive.api.FoldersApi)
-    response = folders_api.get_root_folder()
-    folder_id = name_to_id(response, folder_name)
+def get_folder_id(api_factory, folder_name, path="/"):
+    search_api = api_factory.build(SearchApi)
+    response = search_api.search(SearchBody(with_path=path, name=folder_name))
+    folder_id = name_to_id(response, folder_name, "Folder")
 
     return folder_id
 
 
-def get_file_id(api_factory, file_name, folder_id):
-    folders_api = api_factory.build(lusid_drive.api.FoldersApi)
-    response = folders_api.get_folder_contents(folder_id)
-    file_id = name_to_id(response, file_name)
+def get_file_id(api_factory, file_name, path="/"):
+    search_api = api_factory.build(SearchApi)
+    response = search_api.search(SearchBody(with_path=path, name=file_name))
+    file_id = name_to_id(response, file_name, "File")
 
     return file_id
-
-
-
-

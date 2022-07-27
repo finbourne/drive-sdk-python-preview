@@ -17,7 +17,7 @@ def name_to_id(item_list, target_item):
 
 def get_folder_id(api_factory, folder_name):
     folders_api = api_factory.build(lusid_drive.api.FoldersApi)
-    response = folders_api.get_root_folder()
+    response = folders_api.get_root_folder(filter=f"name eq '{folder_name}'")
     folder_id = name_to_id(response, folder_name)
 
     return folder_id
@@ -25,11 +25,7 @@ def get_folder_id(api_factory, folder_name):
 
 def get_file_id(api_factory, file_name, folder_id):
     folders_api = api_factory.build(lusid_drive.api.FoldersApi)
-    response = folders_api.get_folder_contents(folder_id)
+    response = folders_api.get_folder_contents(folder_id, filter=f"name eq '{file_name}'")
     file_id = name_to_id(response, file_name)
 
     return file_id
-
-
-
-

@@ -28,7 +28,11 @@ class LusidDriveTests(unittest.TestCase):
 
         config = ApiConfigurationLoader.load("secrets.json")
 
-        cls.api_factory = ApiClientFactory(token=config.api_token, api_url=config.drive_url)
+        cls.api_factory = ApiClientFactory(
+            token=config.api_token,
+            drive_url=config.drive_url,
+            api_secrets_filename=os.path.join(os.getcwd(), "secrets.json"))
+
         cls.folder_api = cls.api_factory.build(lusid_drive.api.FoldersApi)
         cls.files_api = cls.api_factory.build(lusid_drive.api.FilesApi)
 
@@ -112,11 +116,11 @@ class LusidDriveTests(unittest.TestCase):
 
     def test_get_folder(self):
 
-        get_folder = self.folder_api.get_root_folder()
+        get_folder = self.folder_api.get_root_folder(filter=f"name eq '{self.test_folder_name}' and type eq 'Folder'")
 
         list_root_contents = ([folder.name for folder in get_folder.values])
 
-        self.assertIn(self.test_folder_name, list_root_contents)
+        self.assertEqual([self.test_folder_name], list_root_contents)
 
     def test_create_file(self):
 

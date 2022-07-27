@@ -65,7 +65,8 @@ class FileStreaming(unittest.TestCase):
 
         # make sure the file to be created in the upload test does not already exist
         try:
-            file_id = get_file_id(cls.api_factory, cls.create_test_file_name, f"/{cls.test_folder_name}")
+            folder_id = get_folder_id(cls.api_factory, cls.test_folder_name)
+            file_id = get_file_id(cls.api_factory, cls.create_test_file_name, folder_id)
             if file_id is not None:
                 cls.files_api.delete_file(file_id)
             else:
@@ -79,7 +80,8 @@ class FileStreaming(unittest.TestCase):
     def tearDownClass(cls) -> None:
 
         def delete_file(file_name, folder_name):
-            _file_id = get_file_id(cls.api_factory, file_name, f"/{folder_name}")
+            _folder_id = get_folder_id(cls.api_factory, folder_name)
+            _file_id = get_file_id(cls.api_factory, file_name, _folder_id)
             if _file_id is not None:
                 cls.files_api.delete_file(_file_id)
 

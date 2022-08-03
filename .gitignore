@@ -203,3 +203,5 @@ sdk/tests/secrets*
 # VS code
 .vscode
 
+.*
+!.gitignore

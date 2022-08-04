@@ -44,7 +44,7 @@
       "config": "password"
   },
   "api_token": {
-    "env": "FBN_API_TOKEN",
+    "env": "FBN_ACCESS_TOKEN",
     "config": "apiToken"
   }
 }

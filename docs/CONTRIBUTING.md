@@ -1,12 +1,12 @@
 # Introduction
 
-Welcome and thank you for considering contributing to the LUSID DRIVE SDK.  We're delighted to have you as part of our community.
+Welcome and thank you for considering contributing to the LUSID SDK.  We're delighted to have you as part of our community.
 
 Following these guidelines will help us effectively manage the contribution process for eveyone involved in the contribution process. It communicates that you respect the time of the developers managing and developing this open source project. In return, we will reciprocate that respect by addressing your issue, assessing changes, and helping you finalize your pull requests.
 
 # Contributing
 
-We have open sourced our SDKs to help make it easy for you to use LUSID DRIVE and welcome contributions from our community. There are many ways to contribute, from writing code samples, improving the documentation, submitting bug reports and feature requests to writing code which can be incorporated into the SDK itself. This section guides you through submitting a contribution to the LUSID DRIVE SDK.
+We have open sourced our SDKs to help make it easy for you to use LUSID and welcome contributions from our community. There are many ways to contribute, from writing code samples, improving the documentation, submitting bug reports and feature requests to writing code which can be incorporated into the SDK itself. This section guides you through submitting a contribution to the LUSID SDK.
 
 ## Reporting bugs
 
@@ -34,4 +34,4 @@ The Core Team reviews pull requests on a regular basis and will give feedback on
 
 # Getting in touch
 
-Please don't use the issue tracker for support questions, for help on using LUSID DRIVE please contact support@lusid.com
+Please don't use the issue tracker for support questions, for help on using LUSID please contact support@lusid.com

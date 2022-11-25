@@ -3,5 +3,4 @@ six >= 1.10
 certifi >= 2021.10.8
 python-dateutil >= 2.5.3
 requests >= 2.26.0
-parameterized~=0.8.1
 setuptools~=60.2.0

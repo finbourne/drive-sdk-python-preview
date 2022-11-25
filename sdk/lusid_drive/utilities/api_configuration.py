@@ -1,3 +1,6 @@
+import re
+
+
 class ApiConfiguration:
 
     def __init__(self, token_url=None, drive_url=None, username=None, password=None, client_id=None, client_secret=None,
@@ -16,7 +19,7 @@ class ApiConfiguration:
         :param str certificate_filename: Name of the certificate file (.pem, .cer or .crt)
         :param lusid_drive.utilities.ProxyConfig proxy_config: The proxy configuration to use
         """
-        self.__token_url = token_url
+        self.token_url = token_url
         self.__drive_url = drive_url
         self.__username = username
         self.__password = password
@@ -41,7 +44,22 @@ class ApiConfiguration:
 
     @token_url.setter
     def token_url(self, value):
-        self.__token_url = value
+        def format_token_url(url: str) -> str:
+            """
+            Given an Okta issuer url (ie: https://lusid-testdomain.okta.com/oauth2/asd8f7a98sdf89a7ad), this function
+            will return a full token url (ie: https://lusid-testdomain.okta.com/oauth2/asd8f7a98sdf89a7ad/v1/token)
+            :param url: The url to format
+            :return: An Okta token url (if the input is an Okta issuer url). The original url otherwise.
+            """
+            if (url is not None and
+                    # and it's an Okta oauth2 URL
+                    re.search('^http(s)?:\/\/.*\.okta\.com\/oauth2\/.+', url, flags=re.IGNORECASE) is not None and
+                    # and it's missing the token suffix
+                    re.search('\/v\d+\/token$', url, flags=re.IGNORECASE) is None):
+                return url.rstrip('/') + '/v1/token'
+            return url
+
+        self.__token_url = format_token_url(value)
 
     @property
     def drive_url(self):

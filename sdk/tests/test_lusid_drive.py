@@ -2,15 +2,15 @@ import unittest
 import json
 import logging
 import os
-from unittest.mock import patch, Mock
-
 import lusid_drive
 import lusid_drive.utilities.utility_functions as utilities
+
 from lusid_drive import models as models, ApiException, FilesApi
 from lusid_drive.utilities import ApiClientFactory
 from lusid_drive.utilities.wait_for_virus_scan import WaitForVirusScan
 from lusid_drive.utilities import ApiConfigurationLoader
-
+from lusid_drive.utilities.folder_api_extensions import create_all_folders_in_path, delete_folder
+from unittest.mock import patch, Mock
 
 class MockApiResponse(object):
     def __init__(self, status=None):
@@ -35,6 +35,7 @@ class LusidDriveTests(unittest.TestCase):
 
         cls.folder_api = cls.api_factory.build(lusid_drive.api.FoldersApi)
         cls.files_api = cls.api_factory.build(lusid_drive.api.FilesApi)
+        cls.search_api = cls.api_factory.build(lusid_drive.api.SearchApi)
 
         cls.test_folder_name = "sdk-test-folder"
         cls.create_test_file_name = "create_test_file.txt"
@@ -163,6 +164,38 @@ class LusidDriveTests(unittest.TestCase):
         file_id = utilities.get_file_id(self.api_factory, self.delete_test_file_name, folder_id)
         response = self.files_api.delete_file(file_id)
         self.assertEqual(None, response)
+
+
+    def test_create_folder(self):
+
+        create_folder_request = create_all_folders_in_path(self.api_factory, "/sdk-tests/create-folder/123/abc")
+
+        get_folder = self.search_api.search(search_body=models.SearchBody(
+            with_path="/sdk-tests/create-folder/123", name="abc"))
+
+        get_folder_path = get_folder.values[0].path
+        get_folder_name = get_folder.values[0].name
+
+        self.assertEqual(get_folder_path, "/sdk-tests/create-folder/123")
+        self.assertEqual(get_folder_name, "abc")
+
+    def test_delete_folder(self):
+
+        create_folder_request = create_all_folders_in_path(self.api_factory, "/sdk-tests-delete-folder/123/abc")
+
+        get_folder_before_delete = self.search_api.search(search_body=models.SearchBody(
+            with_path="/", name="sdk-tests-delete-folder")).values
+
+        delete_folder_request = delete_folder(self.api_factory, "/sdk-tests-delete-folder")
+
+        get_folder_after_delete = self.search_api.search(search_body=models.SearchBody(
+            with_path="/", name="sdk-tests-delete-folder")).values
+
+        self.assertTrue(len(get_folder_before_delete) > 0)
+        self.assertTrue(len(get_folder_after_delete) == 0)
+
+
+
 
 
 if __name__ == '__main__':

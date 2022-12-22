@@ -51,6 +51,8 @@ def create_all_folders_in_path(api_factory, folder_path):
     returns: A list of CreateFolder responses
     """
 
+    folder_path = drive_path_formatter(folder_path)
+
     if len(folder_path) > 1024:
 
         raise ValueError("Path length must be less than 1024 characters")
@@ -72,7 +74,7 @@ def create_all_folders_in_path(api_factory, folder_path):
     return create_folder_requests
 
 
-def path_to_drive_api_parms(drive_path):
+def path_to_search_api_parms(drive_path):
     """
     Function to conver path of format /abc/def/text1 to a format suitable for the SearchApi
 
@@ -81,6 +83,8 @@ def path_to_drive_api_parms(drive_path):
     returns: a tuple of (folder_path, folder_name). For example, the string "/abc/def/text1"
     would return ("/abc/def", "text1")
     """
+
+    drive_path = drive_path_formatter(drive_path)
 
     if drive_path.count("/") == 1:
 
@@ -105,11 +109,8 @@ def delete_folder(api_factory, drive_path):
     :param folder_path str: The folder path on LUSID Drive
     """
 
-    if not drive_path.startswith("/"):
-
-        raise ValueError("The folder_path must start with a forward slash /")
-
-    paths = path_to_drive_api_parms(drive_path)
+    drive_path = drive_path_formatter(drive_path)
+    paths = path_to_search_api_parms(drive_path)
 
     folder_path = paths[0]
     folder_name = paths[1]
@@ -137,5 +138,18 @@ def delete_folder(api_factory, drive_path):
 
         logger.info(f"The folder {drive_path} does not exist in LUSID Drive")
 
+
+
+def drive_path_formatter(drive_path):
+
+    if not drive_path.startswith("/"):
+
+        drive_path = "/" + drive_path
+
+    if drive_path.endswith("/"):
+
+        drive_path = drive_path[:-1]
+
+    return drive_path
 
 

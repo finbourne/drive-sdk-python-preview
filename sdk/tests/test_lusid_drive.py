@@ -9,8 +9,9 @@ from lusid_drive import models as models, ApiException, FilesApi
 from lusid_drive.utilities import ApiClientFactory
 from lusid_drive.utilities.wait_for_virus_scan import WaitForVirusScan
 from lusid_drive.utilities import ApiConfigurationLoader
-from lusid_drive.utilities.folders_api_extensions import create_all_folders_in_path, delete_folder
+from lusid_drive.utilities.folders_api_extensions import create_all_folders_in_path, delete_folder, path_to_search_api_parms, drive_path_formatter
 from unittest.mock import patch, Mock
+from parameterized import parameterized
 
 class MockApiResponse(object):
     def __init__(self, status=None):
@@ -187,31 +188,55 @@ class LusidDriveTests(unittest.TestCase):
 
         self.assertEqual(str(error.exception), 'Path length must be less than 1024 characters')
 
-    def test_delete_folder(self):
+    @parameterized.expand([
+        ["/sdk-tests-delete-folder-1/test1/test2"],
+        ["sdk-tests-delete-folder/test1/test2"],
+        ["/sdk-tests-delete-folder-1"],
+        ["sdk-tests-delete-folder"]
+    ])
+    def test_delete_folder(self, full_folder_path):
 
-        create_folder_request = create_all_folders_in_path(self.api_factory, "/sdk-tests-delete-folder/123/abc")
+        search_api_params = path_to_search_api_parms(full_folder_path)
+        path_for_search_api = search_api_params[0]
+        name_for_search_api = search_api_params[1]
+
+        create_folder_request = create_all_folders_in_path(self.api_factory, full_folder_path)
 
         get_folder_before_delete = self.search_api.search(search_body=models.SearchBody(
-            with_path="/", name="sdk-tests-delete-folder")).values
+            with_path=path_for_search_api, name=name_for_search_api)).values
 
-        delete_folder_request = delete_folder(self.api_factory, "/sdk-tests-delete-folder")
+        delete_folder_request = delete_folder(self.api_factory, full_folder_path)
 
         get_folder_after_delete = self.search_api.search(search_body=models.SearchBody(
-            with_path="/", name="sdk-tests-delete-folder")).values
+            with_path=path_for_search_api, name=name_for_search_api)).values
 
         self.assertTrue(len(get_folder_before_delete) > 0)
         self.assertTrue(len(get_folder_after_delete) == 0)
 
-        with self.assertRaises(ValueError) as error:
 
-            delete_folder_request = delete_folder(self.api_factory, "sdk-tests-delete-folder")
+    @parameterized.expand([
+        ["/drive-sdk/path/test/format"],
+        ["/drive-sdk/path/test/format/"],
+        ["drive-sdk/path/test/format"],
+        ["drive-sdk/path/test/format/"]
+    ])
+    def test_path_to_search_api_params(self, paths):
 
-        self.assertEqual(str(error.exception), 'The folder_path must start with a forward slash /')
+        search_api_params = path_to_search_api_parms(paths)
 
+        self.assertEqual(search_api_params, ("/drive-sdk/path/test", "format"))
 
+    @parameterized.expand([
+        ["/drive-sdk/path/test/format", "/drive-sdk/path/test/format"],
+        ["/drive-sdk/path/test/format/", "/drive-sdk/path/test/format"],
+        ["drive-sdk/path/test/format", "/drive-sdk/path/test/format"],
+        ["drive-sdk/path/test/format/", "/drive-sdk/path/test/format"]
+    ])
+    def test_drive_path_formatter(self, input_path, correct_path):
 
+        updated_drive_path = drive_path_formatter(input_path)
 
-
+        self.assertEqual(updated_drive_path, correct_path)
 
 
 if __name__ == '__main__':

@@ -1,5 +1,11 @@
 import lusid_drive
+import lusid_drive.models as models
+import json
+import logging
 
+
+logger = logging.getLogger("drive-logger")
+logger.setLevel("INFO")
 
 def name_to_id(item_list, target_item):
     item_id = [obj.id for obj in item_list.values if obj.name == target_item]

@@ -166,19 +166,28 @@ class LusidDriveTests(unittest.TestCase):
         response = self.files_api.delete_file(file_id)
         self.assertEqual(None, response)
 
+    @parameterized.expand([
+        ["/sdk-tests-delete-folder-1/test1/test2"],
+        ["sdk-tests-delete-folder/test1/test2"],
+        ["/sdk-tests-delete-folder-1"],
+        ["sdk-tests-delete-folder"]
+    ])
+    def test_create_folder(self, folder_name):
 
-    def test_create_folder(self):
+        create_folder_request = create_all_folders_in_path(self.api_factory, folder_name)
 
-        create_folder_request = create_all_folders_in_path(self.api_factory, "/sdk-tests/create-folder/123/abc")
+        search_api_params = path_to_search_api_parms(folder_name)
+        path_for_search_api = search_api_params[0]
+        name_for_search_api = search_api_params[1]
 
         get_folder = self.search_api.search(search_body=models.SearchBody(
-            with_path="/sdk-tests/create-folder/123", name="abc"))
+            with_path=path_for_search_api, name=name_for_search_api))
 
         get_folder_path = get_folder.values[0].path
         get_folder_name = get_folder.values[0].name
 
-        self.assertEqual(get_folder_path, "/sdk-tests/create-folder/123")
-        self.assertEqual(get_folder_name, "abc")
+        self.assertEqual(get_folder_path, path_for_search_api)
+        self.assertEqual(get_folder_name, name_for_search_api)
 
         big_string_path = "/abc" * 1000
 

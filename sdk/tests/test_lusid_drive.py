@@ -9,7 +9,7 @@ from lusid_drive import models as models, ApiException, FilesApi
 from lusid_drive.utilities import ApiClientFactory
 from lusid_drive.utilities.wait_for_virus_scan import WaitForVirusScan
 from lusid_drive.utilities import ApiConfigurationLoader
-from lusid_drive.utilities.folder_api_extensions import create_all_folders_in_path, delete_folder
+from lusid_drive.utilities.folders_api_extensions import create_all_folders_in_path, delete_folder
 from unittest.mock import patch, Mock
 
 class MockApiResponse(object):
@@ -179,6 +179,14 @@ class LusidDriveTests(unittest.TestCase):
         self.assertEqual(get_folder_path, "/sdk-tests/create-folder/123")
         self.assertEqual(get_folder_name, "abc")
 
+        big_string_path = "/abc" * 1000
+
+        with self.assertRaises(ValueError) as error:
+
+            create_folder_request = create_all_folders_in_path(self.api_factory, big_string_path)
+
+        self.assertEqual(str(error.exception), 'Path length must be less than 1024 characters')
+
     def test_delete_folder(self):
 
         create_folder_request = create_all_folders_in_path(self.api_factory, "/sdk-tests-delete-folder/123/abc")
@@ -193,6 +201,14 @@ class LusidDriveTests(unittest.TestCase):
 
         self.assertTrue(len(get_folder_before_delete) > 0)
         self.assertTrue(len(get_folder_after_delete) == 0)
+
+        with self.assertRaises(ValueError) as error:
+
+            delete_folder_request = delete_folder(self.api_factory, "sdk-tests-delete-folder")
+
+        self.assertEqual(str(error.exception), 'The folder_path must start with a forward slash /')
+
+
 
 
 

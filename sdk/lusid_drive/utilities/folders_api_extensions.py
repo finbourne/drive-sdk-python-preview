@@ -51,6 +51,10 @@ def create_all_folders_in_path(api_factory, folder_path):
     returns: A list of CreateFolder responses
     """
 
+    if len(folder_path) > 1024:
+
+        raise ValueError("Path length must be less than 1024 characters")
+
     sub_dirs = [i for i in folder_path.split("/") if i != ""]
 
     path = "/"
@@ -102,7 +106,8 @@ def delete_folder(api_factory, drive_path):
     """
 
     if not drive_path.startswith("/"):
-        logger.info("The folder_path must start with a forward slash /")
+
+        raise ValueError("The folder_path must start with a forward slash /")
 
     paths = path_to_drive_api_parms(drive_path)
 

@@ -9,7 +9,10 @@ from lusid_drive import models as models, ApiException, FilesApi
 from lusid_drive.utilities import ApiClientFactory
 from lusid_drive.utilities.wait_for_virus_scan import WaitForVirusScan
 from lusid_drive.utilities import ApiConfigurationLoader
-from lusid_drive.utilities.folders_api_extensions import create_all_folders_in_path, delete_folder, path_to_search_api_parms, drive_path_formatter
+from lusid_drive.utilities.folders_api_extensions import (
+    create_all_folders_in_path, delete_folder,
+    path_to_search_api_parms, drive_path_formatter,
+    drive_object_to_id)
 from unittest.mock import patch, Mock
 from parameterized import parameterized
 
@@ -205,19 +208,13 @@ class LusidDriveTests(unittest.TestCase):
     ])
     def test_delete_folder(self, full_folder_path):
 
-        search_api_params = path_to_search_api_parms(full_folder_path)
-        path_for_search_api = search_api_params[0]
-        name_for_search_api = search_api_params[1]
-
         create_folder_request = create_all_folders_in_path(self.api_factory, full_folder_path)
 
-        get_folder_before_delete = self.search_api.search(search_body=models.SearchBody(
-            with_path=path_for_search_api, name=name_for_search_api)).values
+        get_folder_before_delete = drive_object_to_id(self.api_factory, full_folder_path)
 
         delete_folder_request = delete_folder(self.api_factory, full_folder_path)
 
-        get_folder_after_delete = self.search_api.search(search_body=models.SearchBody(
-            with_path=path_for_search_api, name=name_for_search_api)).values
+        get_folder_after_delete = drive_object_to_id(self.api_factory, full_folder_path)
 
         self.assertTrue(len(get_folder_before_delete) > 0)
         self.assertTrue(len(get_folder_after_delete) == 0)
@@ -242,10 +239,21 @@ class LusidDriveTests(unittest.TestCase):
         ["drive-sdk/path/test/format/", "/drive-sdk/path/test/format"]
     ])
     def test_drive_path_formatter(self, input_path, correct_path):
-
         updated_drive_path = drive_path_formatter(input_path)
-
         self.assertEqual(updated_drive_path, correct_path)
+
+    def test_drive_object_to_id(self):
+
+        new_folder_name = "/drive-sdk-test-object-to-id"
+        create_folder_request = create_all_folders_in_path(self.api_factory, new_folder_name)
+
+        base_case_test = drive_object_to_id(self.api_factory, new_folder_name)
+        test_no_id = drive_object_to_id(self.api_factory, "folder-not-exist")
+
+        self.assertEqual(len(base_case_test), 1)
+        self.assertEqual(len(test_no_id), 0)
+
+
 
 
 if __name__ == '__main__':

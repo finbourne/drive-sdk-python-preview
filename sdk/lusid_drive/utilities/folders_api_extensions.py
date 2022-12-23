@@ -110,19 +110,13 @@ def delete_folder(api_factory, drive_path):
     """
 
     drive_path = drive_path_formatter(drive_path)
-    paths = path_to_search_api_parms(drive_path)
-
-    folder_path = paths[0]
-    folder_name = paths[1]
+    drive_ids = drive_object_to_id(api_factory, drive_path)
 
     folder_api = api_factory.build(lusid_drive.api.FoldersApi)
-    search_api = api_factory.build(lusid_drive.api.SearchApi)
 
-    search_file = search_api.search(search_body=models.SearchBody(with_path=folder_path, name=folder_name)).values
+    if len(drive_ids) > 0:
 
-    if len(search_file) > 0:
-
-        folder_ids = [i.id for i in search_file]
+        folder_ids = [i for i in drive_ids]
 
         folder_to_delete = []
 
@@ -151,5 +145,36 @@ def drive_path_formatter(drive_path):
         drive_path = drive_path[:-1]
 
     return drive_path
+
+
+def drive_object_to_id(api_factory, drive_path):
+
+    """
+    Function to return a list of IDs for a given LUSID Drive path.
+
+    :param api_factory ApiClientFactory: A LUSID Drive API Factory
+    :param drive_path str: The path to a file or folder on Drive
+
+    returns a List of Drive IDs
+
+    """
+
+    search_api = api_factory.build(lusid_drive.api.SearchApi)
+
+    drive_path = path_to_search_api_parms(drive_path)
+
+    with_path_for_search = drive_path[0]
+    name_for_search = drive_path[1]
+
+    search_drive = search_api.search(search_body=models.SearchBody(
+        with_path=with_path_for_search, name=name_for_search)).values
+
+    drive_ids = [i.id for i in search_drive]
+
+    return drive_ids
+
+
+
+
 
 

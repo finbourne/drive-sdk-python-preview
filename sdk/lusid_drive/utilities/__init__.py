@@ -7,4 +7,5 @@ from lusid_drive.utilities.proxy_config import ProxyConfig
 from lusid_drive.utilities.api_configuration import ApiConfiguration
 from lusid_drive.utilities.utility_functions import get_file_id
 from lusid_drive.utilities.utility_functions import get_folder_id
+from lusid_drive.utilities.utility_functions import upload_file
 from lusid_drive.utilities.file_streaming import stream_file_upload

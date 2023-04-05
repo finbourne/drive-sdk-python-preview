@@ -1,5 +1,6 @@
 import unittest
 import lusid_drive
+import os
 from unittest import mock
 from lusid_drive.utilities import upload_file
 from lusid_drive.rest import ApiException
@@ -9,6 +10,9 @@ from lusid_drive.rest import ApiException
 class TestDriveFileUpload(unittest.TestCase):
 
     @classmethod
+    def setUpClass(cls) -> None:
+        cls.local_file_path = os.path.join(os.path.dirname(__file__), "data", "test_file.txt")
+    
     def test_upload_file_positive(self) -> None:
         """
         Test that a file can be created successfully
@@ -18,7 +22,7 @@ class TestDriveFileUpload(unittest.TestCase):
         api_client_mock = lusid_drive.FilesApi()
         api_client_mock.create_file = mock.MagicMock()
 
-        with open('./sdk/tests/data/test_file.txt', mode="r") as file:
+        with open(self.local_file_path, mode="r") as file:
             body = file.read()
 
         x_lusid_drive_filename = 'test_file.txt' # str | File name.
@@ -41,7 +45,7 @@ class TestDriveFileUpload(unittest.TestCase):
         api_client_mock.create_file = mock.MagicMock()
         api_client_mock.create_file.side_effect = lusid_drive.ApiException(http_resp= http_resp)
 
-        with open('./sdk/tests/data/test_file.txt', mode="r") as file:
+        with open(self.local_file_path, mode="r") as file:
             body = file.read()
 
         x_lusid_drive_filename = 'test_file.txt' # str | File name.
@@ -65,7 +69,7 @@ class TestDriveFileUpload(unittest.TestCase):
 
         api_client_mock.create_file.side_effect = lusid_drive.ApiException(http_resp= http_resp)
         
-        with open('./sdk/tests/data/test_file.txt', mode="r") as file:
+        with open(self.local_file_path, mode="r") as file:
             body = file.read()
 
         x_lusid_drive_filename = 'test_file.txt' # str | File name.

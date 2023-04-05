@@ -6,7 +6,7 @@ import unittest
 from lusid_drive import ApiConfigurationLoader, SearchApi, SearchBody, FilesApi, FoldersApi, ApiException, models
 from lusid_drive.utilities import ApiClientFactory, get_file_id, get_folder_id
 from lusid_drive.utilities.file_streaming import stream_file_upload
-
+from pprint import pprint
 
 class FileStreaming(unittest.TestCase):
 
@@ -32,8 +32,8 @@ class FileStreaming(unittest.TestCase):
         # create the test folder
         try:
             cls.folder_api.create_folder(models.CreateFolder(path="/", name=cls.test_folder_name))
-
         except ApiException as e:
+            pprint(e)
             if json.loads(e.body)["code"] == 664:
                 # a folder with this name already exists in the path
                 cls.logger.info(json.loads(e.body)["detail"])

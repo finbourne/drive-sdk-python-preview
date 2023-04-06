@@ -2,6 +2,7 @@ import lusid_drive
 import lusid_drive.models as models
 import json
 import logging
+from lusid_drive.rest import ApiException
 
 
 logger = logging.getLogger("drive-logger")
@@ -35,3 +36,35 @@ def get_file_id(api_factory, file_name, folder_id):
     file_id = name_to_id(response, file_name)
 
     return file_id
+
+def upload_file(
+        files_api: lusid_drive.FilesApi,
+        file_name: str,
+        folder_path: str,
+        body: str,
+ ):
+        
+        try:
+            x = files_api.create_file(
+                x_lusid_drive_filename=file_name,
+                x_lusid_drive_path=folder_path,
+                content_length=len(body.encode('UTF-8')),
+                body=body
+                )
+            logging.info(
+                f"File created via the files API"
+            )
+            return x
+
+        except lusid_drive.ApiException as e:
+            detail = json.loads(e.body)
+            if detail["code"] != 671:  # FileAlreadyExists
+                raise e
+            logging.exception(
+                f"File already exists"
+            )
+            return detail
+
+               
+            
+

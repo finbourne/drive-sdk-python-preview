@@ -27,9 +27,10 @@ class TestDriveFileUpload(unittest.TestCase):
 
         x_lusid_drive_filename = 'test_file.txt' # str | File name.
         x_lusid_drive_path = '/' # str | Drive path.
+        content_length = len(body.encode('UTF-8'))
        
         upload_file(api_client_mock,x_lusid_drive_filename, x_lusid_drive_path, body)
-        api_client_mock.create_file.assert_called_once_with(x_lusid_drive_filename='test_file.txt', x_lusid_drive_path='/', content_length=77018, body=body)
+        api_client_mock.create_file.assert_called_once_with(x_lusid_drive_filename=x_lusid_drive_filename, x_lusid_drive_path=x_lusid_drive_path, content_length=content_length, body=body)
 
     def test_upload_file_already_exists(self) -> None:
         """
@@ -50,9 +51,10 @@ class TestDriveFileUpload(unittest.TestCase):
 
         x_lusid_drive_filename = 'test_file.txt' # str | File name.
         x_lusid_drive_path = '/' # str | Drive path.
+        content_length = len(body.encode('UTF-8'))
        
         upload_file(api_client_mock,x_lusid_drive_filename, x_lusid_drive_path, body)
-        api_client_mock.create_file.assert_called_once_with(x_lusid_drive_filename='test_file.txt', x_lusid_drive_path='/', content_length=77018, body=body)
+        api_client_mock.create_file.assert_called_once_with(x_lusid_drive_filename=x_lusid_drive_filename, x_lusid_drive_path=x_lusid_drive_path, content_length=content_length, body=body)
 
     def test_upload_file_exception(self) -> None:
         """
@@ -74,5 +76,6 @@ class TestDriveFileUpload(unittest.TestCase):
 
         x_lusid_drive_filename = 'test_file.txt' # str | File name.
         x_lusid_drive_path = '/' # str | Drive path.
+        
         with self.assertRaises(ApiException):
             upload_file(api_client_mock,x_lusid_drive_filename, x_lusid_drive_path, body)

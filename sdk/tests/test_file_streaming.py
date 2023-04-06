@@ -33,7 +33,6 @@ class FileStreaming(unittest.TestCase):
         try:
             cls.folder_api.create_folder(models.CreateFolder(path="/", name=cls.test_folder_name))
         except ApiException as e:
-            pprint(e)
             if json.loads(e.body)["code"] == 664:
                 # a folder with this name already exists in the path
                 cls.logger.info(json.loads(e.body)["detail"])

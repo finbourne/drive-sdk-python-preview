@@ -6,8 +6,6 @@ import unittest
 from lusid_drive import ApiConfigurationLoader, SearchApi, SearchBody, FilesApi, FoldersApi, ApiException, models
 from lusid_drive.utilities import ApiClientFactory, get_file_id, get_folder_id
 from lusid_drive.utilities.file_streaming import stream_file_upload
-from pprint import pprint
-
 class FileStreaming(unittest.TestCase):
 
     @classmethod

@@ -133,9 +133,12 @@ class LusidDriveTests(unittest.TestCase):
         # delete delete test file if exists
         delete_file(cls.delete_test_file_name, cls.test_folder_name)
 
-        # delete test folder
-        folder_id = utilities.get_folder_id(cls.api_factory, cls.test_folder_name)
-        cls.folder_api.delete_folder(folder_id)
+        try:
+            # delete test folder
+            folder_id = utilities.get_folder_id(cls.api_factory, cls.test_folder_name)
+            cls.folder_api.delete_folder(folder_id)
+        except lusid_drive.ApiException:
+            cls.logger.exception(f"failed to delete folder: {cls.test_folder_name}")
 
     def test_get_folder(self):
         get_folder = self.folder_api.get_root_folder(

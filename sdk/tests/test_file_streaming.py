@@ -15,6 +15,7 @@ from lusid_drive import (
 )
 from lusid_drive.utilities import ApiClientFactory, get_file_id, get_folder_id
 from lusid_drive.utilities.file_streaming import stream_file_upload
+import lusid_drive
 
 
 class FileStreaming(unittest.TestCase):
@@ -109,9 +110,12 @@ class FileStreaming(unittest.TestCase):
         # delete download test file
         delete_file(cls.download_test_file_name, cls.test_folder_name)
 
-        # delete test folder
-        folder_id = get_folder_id(cls.api_factory, cls.test_folder_name)
-        cls.folder_api.delete_folder(folder_id)
+        try:
+            # delete test folder
+            folder_id = get_folder_id(cls.api_factory, cls.test_folder_name)
+            cls.folder_api.delete_folder(folder_id)
+        except lusid_drive.ApiException:
+            cls.logger.exception(f"failed to delete folder: {cls.test_folder_name}")
 
     def test_stream_file_download(self):
         # arrange

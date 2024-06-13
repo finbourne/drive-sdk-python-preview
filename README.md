@@ -1,3 +1,5 @@
+![LUSID_by_Finbourne](./resources/Finbourne_Logo_Teal.svg)
+
 # Deprecated
 
 Please note that this repository is deprecated and will be archived early 2024.

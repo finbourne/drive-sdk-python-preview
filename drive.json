@@ -9,11 +9,72 @@
       "url": "https://www.finbourne.com",
       "email": "info@finbourne.com"
     },
-    "version": "0.1.670",
+    "version": "0.1.672",
     "x-logo": {
       "url": "https://www.lusid.com/app/assets/logo_white.png",
       "backgroundColor": "#415464"
-    }
+    },
+    "x-fbn-error-codes": {
+      "-1": {
+        "title": "Unknown error",
+        "description": "An unexpected error was encountered on our side."
+      },
+      "144": {
+        "title": "Duplicate In Parameter Set"
+      },
+      "151": {
+        "title": "Invalid Parameter Value"
+      },
+      "165": {
+        "title": "Failed To Delete"
+      },
+      "664": {
+        "title": "Folder already exists"
+      },
+      "665": {
+        "title": "Destination directory not found"
+      },
+      "666": {
+        "title": "Unknown Identifier"
+      },
+      "668": {
+        "title": "Root directory not present"
+      },
+      "669": {
+        "title": "Failed to create root directory"
+      },
+      "670": {
+        "title": "File size exceeds maximum limit"
+      },
+      "671": {
+        "title": "File already exists"
+      },
+      "672": {
+        "title": "Could not retrieve file contents"
+      },
+      "683": {
+        "title": "Full path to resource is too long"
+      },
+      "689": {
+        "title": "The supplied pagination token is invalid"
+      },
+      "692": {
+        "title": "This endpoint does not support impersonation"
+      },
+      "696": {
+        "title": "Unexpected payload size"
+      },
+      "715": {
+        "title": "Restricted from downloading file containing malware."
+      },
+      "716": {
+        "title": "Restricted from downloading file whilst virus scan in progress."
+      },
+      "871": {
+        "title": "The specified impersonated user does not exist"
+      }
+    },
+    "x-fbn-description": "Drive is a secure file repository and manager that can act as a staging area for LUSID. You can upload files to Drive in preparation for loading investment data into LUSID, or export data from LUSID to Drive for consumption by external systems. Or simply share files with other LUSID users."
   },
   "servers": [
     {
